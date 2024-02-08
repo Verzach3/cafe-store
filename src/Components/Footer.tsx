@@ -14,15 +14,6 @@ const data = [
     ],
   },
   {
-    title: 'Project',
-    links: [
-      { label: 'Contribute', link: '#' },
-      { label: 'Media assets', link: '#' },
-      { label: 'Changelog', link: '#' },
-      { label: 'Releases', link: '#' },
-    ],
-  },
-  {
     title: 'Community',
     links: [
       { label: 'Join Discord', link: '#' },

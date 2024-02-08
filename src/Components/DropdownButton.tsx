@@ -12,16 +12,13 @@ export function DropdownButton({
   const [inputValue, setInputValue] = useState("");
 
   const handlerSelectValue = (value: string) => {
-    if (inputValue !== value) {
-      setInputValue(value);
-    }
-    return;
+    setInputValue(value);
   };
 
   useEffect(() => {
     if (inputValue.trim().length <= 1) return;
     onCategory(inputValue.trim());
-  }, [inputValue]);
+  }, [inputValue, onCategory]);
 
   return (
     <Select
@@ -29,7 +26,7 @@ export function DropdownButton({
       placeholder="Pick value"
       data={categories.map((item: FetchCategory) => item.name)}
       searchable
-      onChange={handlerSelectValue}
+      onOptionSubmit={ handlerSelectValue }
     />
   );
 }

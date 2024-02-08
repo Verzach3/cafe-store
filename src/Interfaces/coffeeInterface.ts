@@ -14,4 +14,5 @@ export interface FetchProducts {
     description: string;
     images: string;
     price: number;
+    id: string;
 }

@@ -1,5 +1,5 @@
 import "./style.css";
-import { HeaderSimple } from "../Components/Header";
+import { HeaderSearch } from "../Components/Header";
 import { FooterLinks } from "../Components/Footer";
 import { DropdownButton } from "../Components/DropdownButton";
 
@@ -9,13 +9,14 @@ import useProducts from "../hooks/useProducts";
 import useCategory from "../hooks/useCategory";
 import { useCategories } from "../hooks/useCategories";
 import { useEffect, useState } from "react";
+import { FetchCategories, FetchProducts } from "../Interfaces/coffeeInterface";
 
 
 export default function Home() {
   const { isLoading, category } = useCategory();
   const { categories } = useCategories();
   const { card } = useProducts();
-  const [selectCards, setSelectCards] = useState( [] )
+  const [selectCards, setSelectCards] = useState<FetchProducts[]>( [] )
 
   const onCategoryChange = async (value: string) => {
     const filteredProductsId = category.map((product) => {
@@ -28,8 +29,8 @@ export default function Home() {
         return product;
       }
     });
-    const products = card.filter((product) => {
-      if (filteredProducts.find((item) => item.item_id === product.id)) {
+    const products = card.filter((product: FetchProducts) => {
+      if (filteredProducts.find((item: FetchCategories) => item.item_id === product.id)) {
         return product;
       }
     });
@@ -44,7 +45,7 @@ export default function Home() {
 
   return (
     <>
-      <HeaderSimple />
+      <HeaderSearch />
       <div className="searchProduct">
         <DropdownButton categories={category} onCategory={onCategoryChange} />
       </div>
