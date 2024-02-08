@@ -1,35 +1,35 @@
-import { MultiSelect } from '@mantine/core';
-import { useEffect, useState } from 'react';
+import { Select } from "@mantine/core";
+import { FetchCategory } from "../Interfaces/coffeeInterface";
+import { useEffect, useState } from "react";
 
-export function DropdownButton() {
-  //const [product, setproduct] = useState([])
-  const [categories, setcategories] = useState<string[]>([])
+export function DropdownButton({
+  categories,
+  onCategory,
+}: {
+  categories: FetchCategory[];
+  onCategory: (category: string) => void;
+}) {
+  const [inputValue, setInputValue] = useState("");
 
-  const handlerProduct = async () => {
-    console.log("Searching...")
-  }
-
- 
-  
-  //TODO: fetch the product based on the category selected
-  useEffect(() => {
-    const fetchItemCategories = async () => {
-      const records = await window.pb.collection('categories').getFullList();
-      const data = records.map((record: any) =>  record.name);
-      setcategories(data);
+  const handlerSelectValue = (value: string) => {
+    if (inputValue !== value) {
+      setInputValue(value);
     }
-    fetchItemCategories();
-  }, []);
+    return;
+  };
 
-
+  useEffect(() => {
+    if (inputValue.trim().length <= 1) return;
+    onCategory(inputValue.trim());
+  }, [inputValue]);
 
   return (
-    <MultiSelect
-      label="Filter products"
-      placeholder="Search Product"
-      data={categories}
+    <Select
+      label="Filter by category"
+      placeholder="Pick value"
+      data={categories.map((item: FetchCategory) => item.name)}
       searchable
-      onOptionSubmit={ handlerProduct }
+      onChange={handlerSelectValue}
     />
   );
 }
