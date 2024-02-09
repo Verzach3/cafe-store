@@ -1,19 +1,18 @@
-import { Autocomplete, Group, Burger, rem } from '@mantine/core';
+import { Group, Burger, TextInput } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { IconSearch } from '@tabler/icons-react';
 import { MantineLogo } from '@mantinex/mantine-logo';
 import classes from './styles/HeaderSearch.module.css';
+import { useState } from 'react';
+
 
 const links = [
-  { link: '/about', label: 'Features' },
-  { link: '/pricing', label: 'Pricing' },
-  { link: '/learn', label: 'Learn' },
-  { link: '/community', label: 'Community' },
+  { link: '/', label: 'Home' },
+  { link: '/about', label: 'About' },
 ];
 
-export function HeaderSearch() {
+export function HeaderSearch({ onSearch }: { onSearch: (id: string) => void }) {
   const [opened, { toggle }] = useDisclosure(false);
-
+  const [inputValue, setinputValue] = useState("")
   const items = links.map((link) => (
     <a
       key={link.label}
@@ -24,6 +23,18 @@ export function HeaderSearch() {
       {link.label}
     </a>
   ));
+
+    const inputSearch = ({target} : { target: { value: string } }) => {
+      const value = target.value;
+      setinputValue(value)
+    }
+
+    const sendSearch = (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault()
+      if (inputValue.length <= 1) return;
+      onSearch(inputValue.trim())
+      setinputValue("")
+    }
 
   return (
     <header className={classes.header}>
@@ -37,13 +48,13 @@ export function HeaderSearch() {
           <Group ml={50} gap={5} className={classes.links} visibleFrom="sm">
             {items}
           </Group>
-          <Autocomplete
-            className={classes.search}
-            placeholder="Search"
-            leftSection={<IconSearch style={{ width: rem(16), height: rem(16) }} stroke={1.5} />}
-            data={['React', 'Angular', 'Vue', 'Next.js', 'Riot.js', 'Svelte', 'Blitz.js']}
-            visibleFrom="xs"
-          />
+          <form onSubmit={ sendSearch }>
+            <TextInput
+                variant="filled"
+                placeholder="Search..."
+                onChange={ inputSearch }
+            />
+          </form>
         </Group>
       </div>
     </header>

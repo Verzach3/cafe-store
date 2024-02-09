@@ -38,14 +38,22 @@ export default function Home() {
     setSelectCards(products);
   };
 
+  const onSearch = (id : string) => {
+    const product = card.filter((product: FetchProducts) => product.name.toLowerCase().includes(id.toLowerCase()));
+    console.log( product )
+    setSelectCards(product);
+  }
+
   useEffect(() => {
     setSelectCards(card)
   }, [card])
+
+
  
 
   return (
     <>
-      <HeaderSearch />
+      <HeaderSearch onSearch={ onSearch }/>
       <div className="searchProduct">
         <DropdownButton categories={category} onCategory={onCategoryChange} />
       </div>

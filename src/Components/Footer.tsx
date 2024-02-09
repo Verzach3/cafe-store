@@ -5,21 +5,19 @@ import classes from './styles/FooterLinks.module.css';
 
 const data = [
   {
-    title: 'About',
+    title: 'Product',
     links: [
       { label: 'Features', link: '#' },
       { label: 'Pricing', link: '#' },
-      { label: 'Support', link: '#' },
-      { label: 'Forums', link: '#' },
+      { label: 'More info', link: '#' },
     ],
   },
   {
-    title: 'Community',
+    title: 'Company',
     links: [
-      { label: 'Join Discord', link: '#' },
-      { label: 'Follow on Twitter', link: '#' },
-      { label: 'Email newsletter', link: '#' },
-      { label: 'GitHub discussions', link: '#' },
+      { label: 'About', link: '#' },
+      { label: 'Join us', link: '#' },
+      { label: 'Support', link: '#' },
     ],
   },
 ];
@@ -52,14 +50,14 @@ export function FooterLinks() {
         <div className={classes.logo}>
           <MantineLogo size={30} />
           <Text size="xs" c="dimmed" className={classes.description}>
-            Build fully functional accessible web applications faster than ever
+            Colombian Coffee Shop - best coffee in the world
           </Text>
         </div>
         <div className={classes.groups}>{groups}</div>
       </Container>
       <Container className={classes.afterFooter}>
         <Text c="dimmed" size="sm">
-          © 2020 mantine.dev. All rights reserved.
+          © 2024 codeTeam.dev. All rights reserved.
         </Text>
 
         <Group gap={0} className={classes.social} justify="flex-end" wrap="nowrap">
