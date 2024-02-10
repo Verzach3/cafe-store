@@ -26,3 +26,25 @@
     justify-content: center;
     margin-top: 20px;
   }
+
+
+  .noProduct {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .noProduct {
+    position: fixed;
+    top: -100px;
+    animation: slideDown 2s forwards;
+  }
+  
+  @keyframes slideDown {
+    0% {
+      top: -100px;
+    }
+    100% {
+      top: 60px;
+    }
+  }

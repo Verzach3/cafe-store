@@ -2,6 +2,7 @@ import "./style.css";
 import { HeaderSearch } from "../Components/Header";
 import { FooterLinks } from "../Components/Footer";
 import { DropdownButton } from "../Components/DropdownButton";
+import { Notification } from '@mantine/core';
 
 import { Loader } from "@mantine/core";
 import CardsComponent from "../Components/CardsComponent";
@@ -43,7 +44,6 @@ export default function Home() {
     const product = card.filter((product: FetchProducts) => product.name.toLowerCase().includes(id.toLowerCase()));
     setIsserch(product)
     setSelectCards(product);
-    console.log( selectCards )
   }
 
   useEffect(() => {
@@ -67,6 +67,16 @@ export default function Home() {
           <Loader size={50} />
         </div>
       ) : null}
+
+      {
+        !isLoading && selectCards.length === 0 ? (
+          <div className="noProduct">
+            <Notification withBorder color="rgba(0, 0, 0, 1)" title="Product does not exist">
+              The product you are trying to find does not exist or has been removed.
+            </Notification>
+          </div>
+        ) : null
+      }
       <CardsComponent cards={selectCards} />
       <FooterLinks />
     </>
