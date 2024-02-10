@@ -17,6 +17,7 @@ export default function Home() {
   const { categories } = useCategories();
   const { card } = useProducts();
   const [selectCards, setSelectCards] = useState<FetchProducts[]>( [] )
+  const [isserch, setIsserch] = useState<FetchProducts[]>([])
 
   const onCategoryChange = async (value: string) => {
     const filteredProductsId = category.map((product) => {
@@ -40,8 +41,9 @@ export default function Home() {
 
   const onSearch = (id : string) => {
     const product = card.filter((product: FetchProducts) => product.name.toLowerCase().includes(id.toLowerCase()));
-    console.log( product )
+    setIsserch(product)
     setSelectCards(product);
+    console.log( selectCards )
   }
 
   useEffect(() => {
@@ -49,7 +51,10 @@ export default function Home() {
   }, [card])
 
 
- 
+  useEffect(() => {
+    setSelectCards(isserch)
+  }, [isserch])
+
 
   return (
     <>
