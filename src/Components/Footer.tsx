@@ -50,7 +50,7 @@ export function FooterLinks() {
         <div className={classes.logo}>
           <MantineLogo size={30} />
           <Text size="xs" c="dimmed" className={classes.description}>
-            Colombian Coffee Shop - best coffee in the world
+            Descubre Café Granito Marrón, donde ofrecemos nuestro Café Orgánico Diferenciado: Café Origen Calima el Darien. Proveniente de nuestra parcela ubicada en la pintoresca Vereda La Florida de Calima el Darien, a una altitud de 1526 metros sobre el nivel del mar, este café orgánico es cultivado y cosechado con esmero, sin el uso de pesticidas ni químicos. Nuestro compromiso con la pureza se extiende a todo el proceso de transformación, garantizando que nuestro café sea completamente libre de conservantes y aditivos. Sumérgete en una experiencia de sabor auténtico, directamente desde el corazón de Colombia, con Café Origen Calima el Darien Orgánico.
           </Text>
         </div>
         <div className={classes.groups}>{groups}</div>

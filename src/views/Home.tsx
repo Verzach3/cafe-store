@@ -8,36 +8,46 @@ import { Loader } from "@mantine/core";
 import CardsComponent from "../Components/CardsComponent";
 import useProducts from "../hooks/useProducts";
 import useCategory from "../hooks/useCategory";
-import { useCategories } from "../hooks/useCategories";
 import { useEffect, useState } from "react";
-import { FetchCategories, FetchProducts } from "../Interfaces/coffeeInterface";
+import { FetchCategories, FetchCategory, FetchProducts, FetchTosting } from '../Interfaces/coffeeInterface';
+import useTosting from "../hooks/useTosting";
+import { useCategories } from "../hooks/useCategories";
 
 
 export default function Home() {
   const { isLoading, category } = useCategory();
   const { categories } = useCategories();
+  const { tosting_categories, tostingProduct } = useTosting();
   const { card } = useProducts();
   const [selectCards, setSelectCards] = useState<FetchProducts[]>( [] )
   const [isserch, setIsserch] = useState<FetchProducts[]>([])
-
+  
   const onCategoryChange = async (value: string) => {
-    const filteredProductsId = category.map((product) => {
-      if (product.name === value) {
-        return product.id;
-      }
-    });
-    const filteredProducts = categories.filter((product) => {
-      if (filteredProductsId.includes(product.category_id)) {
-        return product;
-      }
-    });
-    const products = card.filter((product: FetchProducts) => {
-      if (filteredProducts.find((item: FetchCategories) => item.item_id === product.id)) {
-        return product;
-      }
-    });
-
-    setSelectCards(products);
+    const findId = category.find((item: FetchCategory) => item.name === value);
+    const getTypeCoffee = categories.filter((item: FetchCategories) => {
+      if (item.category_id === findId?.id) {
+        return item.item_id;
+    }});
+    const data: FetchProducts[] = [];
+    for (let i = 0; i < getTypeCoffee.length; i++) {
+      const products = card.filter((obj : FetchProducts) => getTypeCoffee[i].item_id.includes(obj.id));
+      data.push(...products);
+    }
+    setSelectCards(data);
+  };
+ 
+  const onCategoryTostingChange = async (value: string) => {
+    const findId = tosting_categories.find((item: FetchCategory) => item.name === value);
+    const getAllTosting = tostingProduct.filter((item: FetchTosting) => {
+      if (item.tosting === findId?.id) {
+        return item.product;
+    }});
+    const data: FetchProducts[] = [];
+    for (let i = 0; i < getAllTosting.length; i++) {
+      const products = card.filter((obj : FetchProducts) => getAllTosting[i].product.includes(obj.id));
+      data.push(...products);
+    }
+    setSelectCards(data);
   };
 
   const onSearch = (id : string) => {
@@ -45,7 +55,7 @@ export default function Home() {
     setIsserch(product)
     setSelectCards(product);
   }
-
+  
   useEffect(() => {
     setSelectCards(card)
   }, [card])
@@ -60,7 +70,7 @@ export default function Home() {
     <>
       <HeaderSearch onSearch={ onSearch }/>
       <div className="searchProduct">
-        <DropdownButton categories={category} onCategory={onCategoryChange} />
+        <DropdownButton categories={category} onCategory={onCategoryChange} tosting_categories={tosting_categories} onCategoryTostingChange={onCategoryTostingChange}/>
       </div>
       {isLoading ? (
         <div className="Loader">

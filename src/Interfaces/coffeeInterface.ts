@@ -16,3 +16,10 @@ export interface FetchProducts {
     price: number;
     id: string;
 }
+
+export interface FetchTosting {
+    collectionId: string;
+    id: string;
+    product: string[];
+    tosting: string;
+}
