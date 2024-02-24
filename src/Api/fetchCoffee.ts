@@ -1,5 +1,5 @@
 import { FetchCategories, FetchCategory, FetchProducts, FetchTosting } from "../Interfaces/coffeeInterface";
-
+import axios from "axios";
 
 
 
@@ -8,14 +8,14 @@ export const fetchCategory = async () : Promise<FetchCategory[]> => {
     return response;
 }
 
-export const fetchCategoriesById = async (id: string) : Promise<FetchCategories[]> => {
-    const response = await window.pb.collection<FetchCategories>("items_categories").getFullList({
-        where: [
-            ["category_id", "==", id]
-        ]
-    });
+export const fetchCategoriesById = async (id: string) => {
+    const response = await axios.get(`https://cafe-granito-marron-pb.fly.dev/api/collections/items_categories/records?filter=(category_id='${id}')`)
+    return response.data.items;
+}
 
-    return transformCategories(response);
+export const fetchTostingById = async (id: string) => {
+    const response = await axios.get(`https://cafe-granito-marron-pb.fly.dev/api/collections/toasting_items/records?filter=(tosting='${id}')`)
+    return response.data.items;
 }
 
 export const fetchCategories = async () : Promise<FetchCategories[]> => {

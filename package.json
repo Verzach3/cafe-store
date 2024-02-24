@@ -21,6 +21,7 @@
     "@mantinex/mantine-logo": "^1.0.1",
     "@tabler/core": "1.0.0-beta20",
     "@tabler/icons-react": "^2.47.0",
+    "axios": "^1.6.7",
     "dayjs": "^1.11.10",
     "embla-carousel-react": "8.0.0-rc22",
     "pocketbase": "^0.21.1",

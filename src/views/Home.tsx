@@ -9,68 +9,85 @@ import CardsComponent from "../Components/CardsComponent";
 import useProducts from "../hooks/useProducts";
 import useCategory from "../hooks/useCategory";
 import { useEffect, useState } from "react";
-import { FetchCategories, FetchCategory, FetchProducts, FetchTosting } from '../Interfaces/coffeeInterface';
+import { FetchProducts, FetchCategory } from '../Interfaces/coffeeInterface';
 import useTosting from "../hooks/useTosting";
-import { useCategories } from "../hooks/useCategories";
+import { fetchCategoriesById, fetchTostingById } from "../Api/fetchCoffee";
+
 
 
 export default function Home() {
   const { isLoading, category } = useCategory();
-  const { categories } = useCategories();
-  const { tosting_categories, tostingProduct } = useTosting();
+  const { tosting_categories } = useTosting();
   const { card } = useProducts();
   const [selectCards, setSelectCards] = useState<FetchProducts[]>( [] )
   const [isserch, setIsserch] = useState<FetchProducts[]>([])
+  const [selectedToasting, setSelectedToasting] = useState("")
+  const [selectedCategory, setSelectedCategory] = useState("")
   
-  const onCategoryChange = async (value: string) => {
-    const findId = category.find((item: FetchCategory) => item.name === value);
-    const getTypeCoffee = categories.filter((item: FetchCategories) => {
-      if (item.category_id === findId?.id) {
-        return item.item_id;
-    }});
-    const data: FetchProducts[] = [];
-    for (let i = 0; i < getTypeCoffee.length; i++) {
-      const products = card.filter((obj : FetchProducts) => getTypeCoffee[i].item_id.includes(obj.id));
-      data.push(...products);
-    }
-    setSelectCards(data);
-  };
- 
-  const onCategoryTostingChange = async (value: string) => {
-    const findId = tosting_categories.find((item: FetchCategory) => item.name === value);
-    const getAllTosting = tostingProduct.filter((item: FetchTosting) => {
-      if (item.tosting === findId?.id) {
-        return item.product;
-    }});
-    const data: FetchProducts[] = [];
-    for (let i = 0; i < getAllTosting.length; i++) {
-      const products = card.filter((obj : FetchProducts) => getAllTosting[i].product.includes(obj.id));
-      data.push(...products);
-    }
-    setSelectCards(data);
-  };
 
   const onSearch = (id : string) => {
     const product = card.filter((product: FetchProducts) => product.name.toLowerCase().includes(id.toLowerCase()));
     setIsserch(product)
     setSelectCards(product);
   }
+
+  
+useEffect(() => {
+  const onFilterTosting = async (id: string) => {
+    if (id === "") {
+      setSelectCards(card);
+      return;
+    }
+    const findId = tosting_categories.find((item: FetchCategory) => item.name === id);
+    if (!findId) return;
+    const response = await fetchTostingById(findId.id);
+    const data: FetchProducts[] = [];
+    for (let i = 0; i < response.length; i++) {
+      const products = card.filter((obj : FetchProducts) => response[i].product.includes(obj.id));
+      data.push(...products);
+    }
+    setSelectCards(data);
+  }
+  onFilterTosting(selectedToasting)
+}, [selectedToasting, tosting_categories, card])
+
+
+useEffect(() => {
+  const onFilterCategory = async (id: string) => {
+    if (id === "") {
+      setSelectCards(card);
+      return;
+    }
+    const findId = category.find((item: FetchCategory) => item.name === id);
+    if (!findId) return;
+    const response = await fetchCategoriesById(findId.id);
+    const data: FetchProducts[] = [];
+    for (let i = 0; i < response.length; i++) {
+      const products = card.filter((obj : FetchProducts) => obj.id === response[i].item_id);
+      data.push(...products);
+    }
+    setSelectCards(data);
+  }
+  onFilterCategory(selectedCategory)
+}, [selectedCategory, category, card])
+
+
   
   useEffect(() => {
     setSelectCards(card)
   }, [card])
 
-
+    
   useEffect(() => {
     setSelectCards(isserch)
   }, [isserch])
 
-
+  
   return (
     <>
       <HeaderSearch onSearch={ onSearch }/>
       <div className="searchProduct">
-        <DropdownButton categories={category} onCategory={onCategoryChange} tosting_categories={tosting_categories} onCategoryTostingChange={onCategoryTostingChange}/>
+        <DropdownButton categories={category} tosting_categories={tosting_categories} toastingGetter={selectedToasting} toastingSetter={setSelectedToasting} categoryGetter={ selectedCategory } categorySetter={ setSelectedCategory }/>
       </div>
       {isLoading ? (
         <div className="Loader">
