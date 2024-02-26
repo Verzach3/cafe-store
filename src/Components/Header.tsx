@@ -2,7 +2,8 @@ import { Group, Burger, TextInput } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import classes from './styles/HeaderSearch.module.css';
 import { useState } from 'react';
-
+import './styles/HeaderLogo.css'
+import { BiSolidCoffeeBean } from "react-icons/bi";
 
 const links = [
   { link: '/', label: 'Inicio' },
@@ -44,7 +45,7 @@ export function HeaderSearch({ onSearch }: { onSearch: (id: string) => void }) {
       <div className={classes.inner}>
         <Group>
           <Burger opened={opened} onClick={dropButton} size="sm" hiddenFrom="sm" />
-          
+          <BiSolidCoffeeBean className='logo'/>
         </Group>
 
         <Group>

@@ -12,8 +12,9 @@ export default function CardsComponent({ cards } : {cards: FetchProducts[]}) {
             key={index}
             name={product.name}
             description={product.description}
-            image={product.images}
+            image={window.pb.files.getUrl(product, product.images[0])}
             price={product.price}
+            cardId={product.id}
           />
         ))}
       </div>

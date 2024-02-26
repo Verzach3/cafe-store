@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import { FetchProducts, FetchCategory } from '../Interfaces/coffeeInterface';
 import useTosting from "../hooks/useTosting";
 import { fetchCategoriesById, fetchTostingById } from "../Api/fetchCoffee";
+import { SearchAndFilter } from "../Components/SearchAndFilter";
 
 
 
@@ -23,7 +24,7 @@ export default function Home() {
   const [isserch, setIsserch] = useState<FetchProducts[]>([])
   const [selectedToasting, setSelectedToasting] = useState("")
   const [selectedCategory, setSelectedCategory] = useState("")
-  
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 600);
 
   const onSearch = (id : string) => {
     const product = card.filter((product: FetchProducts) => product.name.toLowerCase().includes(id.toLowerCase()));
@@ -82,12 +83,29 @@ useEffect(() => {
     setSelectCards(isserch)
   }, [isserch])
 
-  
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 600);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <>
       <HeaderSearch onSearch={ onSearch }/>
       <div className="searchProduct">
-        <DropdownButton categories={category} tosting_categories={tosting_categories} toastingGetter={selectedToasting} toastingSetter={setSelectedToasting} categoryGetter={ selectedCategory } categorySetter={ setSelectedCategory }/>
+        {
+          isMobile ? (
+            <SearchAndFilter/>
+            ) : (
+            <DropdownButton categories={category} tosting_categories={tosting_categories} toastingGetter={selectedToasting} toastingSetter={setSelectedToasting} categoryGetter={ selectedCategory } categorySetter={ setSelectedCategory }/>
+          )
+        }
       </div>
       {isLoading ? (
         <div className="Loader">
