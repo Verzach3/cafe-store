@@ -1,13 +1,12 @@
 
 import { useEffect, useState } from "react";
-import { CarouselComponent } from "../Components/Carousel/Carousel";
-import { FooterLinks } from "../Components/Footer/Footer";
-import Header from "../Components/Header/Header";
-import HomePage from "../Components/HomePage/HomePage";
+import { CarouselComponent } from "../components/Carousel/Carousel";
+import HomePage from "../components/HomePage/HomePage";
 import useProducts from "../hooks/useProducts";
 import "./style.css";
 import { Product } from '../types/types';
 import { transformProduct } from "../helper/transformProduct";
+import {FooterLinks} from "../components/Footer/Footer.tsx";
 
 
 export default function Home() {
@@ -27,7 +26,6 @@ useEffect(() => {
 
   return (
     <>
-      <Header />
       <HomePage />
       <CarouselComponent product={products}/>
       <FooterLinks/>
