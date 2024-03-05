@@ -1,9 +1,8 @@
-import Header from '../Components/Header/Header'
 import './style.css'
+import {FooterLinks} from "../components/Footer/Footer.tsx";
 export default function About() {
   return (
     <>
-      <Header />
       <section className="about" id="about">
             <h1 className="heading"><span>about</span>us</h1>
             <div className="row">
@@ -18,6 +17,7 @@ export default function About() {
                 </div>
             </div>
       </section>
+      <FooterLinks/>
     </>
   )
 }

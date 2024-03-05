@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from "react"
 import { Item } from "../types/types"
-import { coffeeApi } from "../Api/poketbaseApi"
+import { coffeeApi } from "../api/poketbaseApi"
 
 export default function useProducts(url : string) : { data: Item[], loading: boolean, error: boolean } {
     const [data, setData] = useState<Item[]>([])

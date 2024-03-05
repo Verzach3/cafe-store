@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
-import { FooterLinks } from "../Components/Footer/Footer";
-import Header from "../Components/Header/Header";
+import { FooterLinks } from "../components/Footer/Footer";
 import useProducts from "../hooks/useProducts";
 import { Item, Product } from "../types/types";
 import { transformProduct } from "../helper/transformProduct";
-import Card from "../Components/Cards/Card";
+import Card from "../components/Cards/Card";
 import { Loader } from "@mantine/core";
-import { SearchAndFilter } from "../Components/Filter/SearchAndFilter";
-import { coffeeApi } from "../Api/poketbaseApi";
+import { SearchAndFilter } from "../components/Filter/SearchAndFilter";
+import { coffeeApi } from "../api/poketbaseApi";
 
 
 export default function Products() {
@@ -51,7 +50,6 @@ export default function Products() {
   
   return (
     <>
-      <Header />
       <div className="filter">
         <SearchAndFilter onChangeProducts={onChangeProducts} />
       </div>
