@@ -6,7 +6,7 @@ import { Button } from "@mantine/core";
 import "./Card.css";
 import { useState } from "react";
 import useCart from "../../hooks/useCart";
-
+import '../styleComponent.css';
 export default function Card({ product }: { product: Product }) {
   const [quantity, setQuantity] = useState(0);
 
@@ -30,23 +30,25 @@ export default function Card({ product }: { product: Product }) {
               <div className="buttons">
                 <Button
                   variant="filled"
-                  color="rgb(190, 215, 84)"
-                  size="md"
+                  color="rgb(255, 0, 0)"
+                  size="xl"
                   onClick={handleAdd}
+                  className="btn-add"
                 >
                   +
                 </Button>
                 <Button
                   variant="filled"
-                  color="rgb(190, 215, 84)"
-                  size="md"
+                  color="rgb(255, 0, 0)"
+                  size="xl"
                   onClick={handleSubs}
+                  className="btn-substract"
                 >
                   -
                 </Button>
               </div>
               <Button
-                color="rgb(227, 101, 29)"
+                color="rgb(149, 1, 1)"
                 className="btn-cart"
                 size={"xl"}
                 onClick={() => addToCart(product, quantity)}

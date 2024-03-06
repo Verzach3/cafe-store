@@ -3,6 +3,7 @@ import "@mantine/carousel/styles.css";
 import { Product } from "../../types/types";
 import Card from "../Cards/Card";
 import "./Carousel.css";
+import '../styleComponent.css';
 export function CarouselComponent({ product }: { product: Product[] }) {
 
   return (

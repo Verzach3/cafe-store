@@ -12,7 +12,7 @@ export default function CartContainer({ carIsOpen }: { carIsOpen: boolean }) {
         <div className="cart-item" key={index}>
           <Button
             variant="filled"
-            color="rgb(117, 14, 33)"
+            color="rgb(149, 1, 1)"
             size="sm"
             className="btn-delete"
             onClick={() => {
@@ -34,7 +34,7 @@ export default function CartContainer({ carIsOpen }: { carIsOpen: boolean }) {
         variant="filled"
         className="btn"
         size="xl"
-        color="rgb(227, 101, 29)"
+        color="rgb(255, 0, 0)"
       >
         Comprar
       </Button>
