@@ -1,11 +1,11 @@
 import {useEffect, useState} from "react";
-import {Product} from "../types/types.ts";
+import {Item} from "../types/types.ts";
 import {Card, Container, Image, Indicator, SimpleGrid, Text, TextInput} from "@mantine/core";
 
 function Admin() {
-    const [products, setProducts] = useState<Product[]>([]);
+    const [products, setProducts] = useState<Item[]>([]);
     useEffect(() => {
-        window.pb.collection("items").getFullList<Product>().then((response) => {
+        window.pb.collection("items").getFullList<Item>().then((response) => {
             return setProducts(response);
         }).catch((error) => {
             console.log(error);
