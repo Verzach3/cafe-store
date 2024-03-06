@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { CarouselComponent } from "../components/Carousel/Carousel";
 import HomePage from "../components/HomePage/HomePage";
 import useProducts from "../hooks/useProducts";
-import "./styles/header.css";
+import "./styles/Header.css";
 import { Product } from '../types/types';
 import { transformProduct } from "../helper/transformProduct";
 import {FooterLinks} from "../components/Footer/Footer.tsx";
