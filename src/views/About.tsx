@@ -6,7 +6,7 @@ export default function About() {
       <section className="about" id="about">
             <div className="row">
                 <div className="image">
-                    <img src="../../../public/_0e631b5e-a34a-4295-99c2-fcb7552bccde.jpeg" alt="" />
+                    <img src="/_0e631b5e-a34a-4295-99c2-fcb7552bccde.jpeg" alt="" />
                 </div>
                 <div className="content">
                     <h3>Sobre<span> Nosotros</span></h3>
