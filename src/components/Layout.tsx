@@ -6,7 +6,7 @@ function Layout() {
   return (
     <AppShell>
       <AppShell.Header>
-        <Header/>
+        <Header />
       </AppShell.Header>
       <AppShell.Main>
         <Outlet/>

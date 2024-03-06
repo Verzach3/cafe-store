@@ -27,6 +27,15 @@ export type Product = {
     id : string;
 }
 
+export type ProductCart = {
+    name: string;
+    price: string;
+    description: string;
+    images: string;
+    id : string;
+    quantity: number;
+}
+
 type expand = {
     category_id: category_id;
     item_id:     Product;

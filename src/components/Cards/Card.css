@@ -15,25 +15,41 @@
 
 
 
-.box-container .box .icons a {
-    height: 5rem;
-    width: 5rem;
+.box-container .box .icons .btn-cart {
     line-height: 5rem;
-    font-size: 2rem;
-    border: var(--border);
-    color: #fff;
     margin: .3rem;
+
 }
 
 
+.box-container .box .icons .buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 1rem;
+}
 
-
-.box-container .box .icons a:hover {
-    background-color: var(--main-color);
-    color: var(--bg);
+.box-container .box .icons .buttons:hover {
+    color: rgb(25, 25, 25);
     transition: .3s;
 }
 
+
+
+.box-container .box .icons .btn-cart:hover {
+    color: rgb(117, 14, 33);
+    transition: .3s;
+}
+
+.box-container .box .icons .quantity {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 1.5rem;
+}
 
 .box-container .box .image{
     padding: 2.5rem;

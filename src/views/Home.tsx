@@ -9,11 +9,14 @@ import { transformProduct } from "../helper/transformProduct";
 import {FooterLinks} from "../components/Footer/Footer.tsx";
 
 
+
+
 export default function Home() {
   
 const { data } = useProducts("/api/collections/items/records");
 
 const [products, setProducts] = useState<Product[]>([]);
+
 
 useEffect(() => {
   (() => {

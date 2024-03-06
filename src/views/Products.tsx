@@ -5,8 +5,9 @@ import { Item, Product } from "../types/types";
 import { transformProduct } from "../helper/transformProduct";
 import Card from "../components/Cards/Card";
 import { Loader } from "@mantine/core";
-import { SearchAndFilter } from "../components/Filter/SearchAndFilter";
+//import { SearchAndFilter } from "../components/Filter/SearchAndFilter";
 import { coffeeApi } from "../api/poketbaseApi";
+import GradientSegmentedControl from "../components/Filter/Filter";
 
 
 export default function Products() {
@@ -27,6 +28,29 @@ export default function Products() {
     const products: Item[] = [];
     let data;
     if (!id) return;
+    if (id === "Todos") {
+      coffeeApi.get("/api/collections/items/records")
+      .then((response) => {
+        products.push(...response.data.items);
+      }).catch((error) => {
+        console.log(error);
+      }).finally(() => {
+        if (!products) return;
+        data = products.map((product) => {
+          return {
+            name: product.name,
+            price: product.price,
+            description: product.description,
+            images: window.pb.files.getUrl(product, product.images[0]),
+            id: product.id
+          }
+        });
+        setProducts(data);
+        setIsLoading(false);
+      });
+      return;
+
+    }
     coffeeApi.get(`/api/collections/items_categories/records?filter=(category_id='${id}' )&expand=item_id`)
     .then((response) => {
       products.push(...response.data.items);
@@ -51,7 +75,7 @@ export default function Products() {
   return (
     <>
       <div className="filter">
-        <SearchAndFilter onChangeProducts={onChangeProducts} />
+        <GradientSegmentedControl onChangeProducts={onChangeProducts}/>
       </div>
       {loading || isLoading ? (
         <div className="loader">
