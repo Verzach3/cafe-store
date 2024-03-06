@@ -1,11 +1,9 @@
 import { Carousel } from "@mantine/carousel";
 import "@mantine/carousel/styles.css";
-import { useRef } from "react";
-import Autoplay from "embla-carousel-autoplay";
 import { Product } from "../../types/types";
 import Card from "../Cards/Card";
+import "./Carousel.css";
 export function CarouselComponent({ product }: { product: Product[] }) {
-  const autoplay = useRef(Autoplay({ delay: 2400 }));
 
   return (
     <div className="component">
@@ -14,21 +12,18 @@ export function CarouselComponent({ product }: { product: Product[] }) {
       </h3>
       <Carousel
         withIndicators
-        height={900}
+        height={1200}
         slideSize={{ base: "100%", sm: "50%", md: "33.333333%" }}
-        slideGap={{ base: 0, sm: "md" }}
+        slideGap={{ base: "xs", sm: "md" }}
         loop
         align="start"
-        slidesToScroll={1}
-        plugins={[autoplay.current]}
-        onMouseEnter={autoplay.current.stop}
-        onMouseLeave={autoplay.current.reset}
+        slidesToScroll={product.length > 3 ? 3 : 1}
       >
-        {product.map((product) => (
-          <Carousel.Slide key={product.id}>
-              <Card product={product} />
-          </Carousel.Slide>
-        ))}
+          {product.map((product) => (
+              <Carousel.Slide key={product.id}>
+                  <Card product={product} />
+              </Carousel.Slide>
+          ))}
       </Carousel>
     </div>
   );

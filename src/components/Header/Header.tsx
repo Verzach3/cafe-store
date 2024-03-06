@@ -10,10 +10,10 @@ export default function Header() {
   return (
     <header className="header" style={{ height: rem("120px")}}>
         <a href="#" className="logo">
-            <img src="../../../public/Logo.png" alt="" />
+            
         </a>
         <Navbar carIsOpen={carIsOpen} setCartIsOpen={setCartIsOpen} searchIsOpen={searchIsOpen} setSearchIsOpen={setSearchIsOpen}/>
-        <CartContainer carIsOpen={carIsOpen} />
+        <CartContainer carIsOpen={carIsOpen}/>
     </header>
   )
 }
