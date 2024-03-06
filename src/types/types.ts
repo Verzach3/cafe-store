@@ -23,7 +23,7 @@ export type Product = {
     name: string;
     price: string;
     description: string;
-    images: string;
+    images: string[];
     id : string;
 }
 
