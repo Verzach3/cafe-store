@@ -1,0 +1,29 @@
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 40px;
+    justify-items: center;
+    margin-top: 90px;
+    margin-left: 40px;
+    margin-right: 40px;
+    padding-bottom: 90px;
+}
+
+
+.products .box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+
+
+.loader {
+    display: flex;
+    justify-content: center;
+    margin-top: 200px;
+}
+
+.filter {
+    display: flex;
+    justify-content: center;
+    margin-top: 150px;
+}

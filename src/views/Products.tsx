@@ -8,12 +8,13 @@ import { Loader } from "@mantine/core";
 //import { SearchAndFilter } from "../components/Filter/SearchAndFilter";
 import { coffeeApi } from "../api/poketbaseApi";
 import GradientSegmentedControl from "../components/Filter/Filter";
-
+import "./styles/Products.css";
 
 export default function Products() {
   const { data, loading } = useProducts("/api/collections/items/records");
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(false)
+  
   useEffect(() => {
     (() => {
       if (data.length > 0) {
@@ -71,6 +72,7 @@ export default function Products() {
       setIsLoading(false);
     });
   }
+
   
   return (
     <>
@@ -79,7 +81,7 @@ export default function Products() {
       </div>
       {loading || isLoading ? (
         <div className="loader">
-          <Loader color="blue" size="lg" type="bars"/>
+          <Loader color="rgb(255, 0, 0)" size="lg" type="bars"/>
         </div>
       ) : (
         <section className="products" id="products">

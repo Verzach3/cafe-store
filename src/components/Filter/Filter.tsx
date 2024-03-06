@@ -37,9 +37,11 @@ export default function GradientSegmentedControl({ onChangeProducts }: { onChang
                     const category = categoriesId.find((item) => item.name === value);
                     onChangeProducts(category?.id || '');
                     setValue(value);
-                  }}
+                  }
+                }
                 classNames={classes}
             />
+            
         </>
     );
 }

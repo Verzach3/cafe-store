@@ -8,13 +8,14 @@ export default function useCart() {
     const [cart, setCart] = useAtom(cartAtom);
 
     const addToCart = (product: Product, quantity: number) => {
+        if (quantity <= 0) return
         const productInCart = cart.find((item) => item.id === product.id)
         if (productInCart) {
             const newCart = cart.map((item) => {
                 if (item.id === product.id) {
                     return {
                         ...item,
-                        quantity: quantity
+                        quantity: quantity + item.quantity
                     }
                 }
                 return item
@@ -35,7 +36,9 @@ export default function useCart() {
         setCart([])
     }
 
-    return { cart, addToCart, removeFromCart, clearCart }
+    const totalQuantity = cart.reduce((acc, item) => acc + item.quantity, 0)
+
+    return { cart, addToCart, removeFromCart, clearCart, totalQuantity }
 }
 
 
