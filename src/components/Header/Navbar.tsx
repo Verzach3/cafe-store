@@ -71,7 +71,6 @@ export default function Navbar({
         <a href="/">Inicio</a>
         <a href="/products">Productos</a>
         <a href="/about">Sobre nosotros</a>
-        <a href="#">Contacto</a>
       </nav>
       <div className="icons">
         <div>

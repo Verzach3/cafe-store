@@ -6,7 +6,6 @@ import useProducts from "../hooks/useProducts";
 import "./styles/Header.css";
 import { Product } from '../types/types';
 import { transformProduct } from "../helper/transformProduct";
-import {FooterLinks} from "../components/Footer/Footer.tsx";
 
 
 
@@ -31,7 +30,6 @@ useEffect(() => {
     <>
       <HomePage />
       <CarouselComponent product={products}/>
-      <FooterLinks/>
     </>
   );
 }

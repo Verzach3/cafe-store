@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { FooterLinks } from "../components/Footer/Footer";
 import useProducts from "../hooks/useProducts";
 import { Item, Product } from "../types/types";
 import { transformProduct } from "../helper/transformProduct";
@@ -90,7 +89,6 @@ export default function Products() {
           ))}
         </section>
       )}
-      <FooterLinks />
     </>
   );
 }

@@ -1,5 +1,4 @@
 import './styles/About.css'
-import {FooterLinks} from "../components/Footer/Footer.tsx";
 export default function About() {
   return (
     <>
@@ -16,7 +15,6 @@ export default function About() {
                 </div>
             </div>
       </section>
-      <FooterLinks/>
     </>
   )
 }
