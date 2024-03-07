@@ -1,6 +1,4 @@
-import { Text, Container, ActionIcon, Group, rem } from '@mantine/core';
-import { IconBrandTwitter, IconBrandYoutube, IconBrandInstagram } from '@tabler/icons-react';
-import { IconExternalLink } from '@tabler/icons-react';
+import { Text, Container, Group } from '@mantine/core';
 
 import classes from './FooterLinks.module.css';
 
