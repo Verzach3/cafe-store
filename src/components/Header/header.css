@@ -72,12 +72,12 @@
 }
 
 .header .search-form input {
+    width: 50rem;
     height: 100%;
-    width: 100%;
-    font-size: 1.6rem;
-    color: var(--black);
-    padding: 1rem;
-    text-transform: none;
+    padding: 0 1.5rem;
+    font-size: 2rem;
+    border: none;
+    outline: none;
 }
 
 .header .search-form label {
@@ -144,6 +144,10 @@
     padding-bottom: .5rem;
 }
 
+.header .cart-items-container .cart-item .content .slider {
+   margin-top: 1rem;
+   margin-bottom: 2rem;
+}
 
 .header .cart-items-container .cart-item .content .price {
     font-size: 1.5rem;
@@ -177,6 +181,8 @@
     width: 100%;
     text-align: center;
 }
+
+
 
 .cart-item-count {
     position: fixed;

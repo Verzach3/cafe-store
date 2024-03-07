@@ -4,21 +4,9 @@ import { PiStarThin } from "react-icons/pi";
 import { Button } from "@mantine/core";
 
 import "./Card.css";
-import { useState } from "react";
 import useCart from "../../hooks/useCart";
-import '../styleComponent.css';
+import "../styleComponent.css";
 export default function Card({ product }: { product: Product }) {
-  const [quantity, setQuantity] = useState(0);
-
-  const handleAdd = () => {
-    setQuantity(quantity + 1);
-  };
-
-  const handleSubs = () => {
-    if (quantity === 0) return;
-    setQuantity(quantity - 1);
-  };
-
   const { addToCart } = useCart();
 
   return (
@@ -27,35 +15,14 @@ export default function Card({ product }: { product: Product }) {
         <div className="box-container">
           <div className="box">
             <div className="icons">
-              <div className="buttons">
-                <Button
-                  variant="filled"
-                  color="rgb(255, 0, 0)"
-                  size="xl"
-                  onClick={handleAdd}
-                  className="btn-add"
-                >
-                  +
-                </Button>
-                <Button
-                  variant="filled"
-                  color="rgb(255, 0, 0)"
-                  size="xl"
-                  onClick={handleSubs}
-                  className="btn-substract"
-                >
-                  -
-                </Button>
-              </div>
               <Button
                 color="rgb(149, 1, 1)"
                 className="btn-cart"
                 size={"xl"}
-                onClick={() => addToCart(product, quantity)}
+                onClick={() => addToCart(product, 1)}
               >
                 Añadir <FaCartPlus />
               </Button>
-              <div className="quantity">{quantity}</div>
             </div>
             <div className="image">
               <img src={product.images} alt="" />

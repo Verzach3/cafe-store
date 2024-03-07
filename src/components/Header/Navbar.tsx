@@ -4,9 +4,10 @@ import { IoMdMenu } from "react-icons/io";
 
 import "./header.css";
 import useCart from "../../hooks/useCart";
-import { coffeeApi } from "../../api/poketbaseApi";
+
 import { useNavigate } from "react-router-dom";
-import { Product } from "../../types/types";
+import { useAtom } from "jotai";
+import { searchAtom } from "../../lib/atoms";
 
 export default function Navbar({
   carIsOpen,
@@ -19,10 +20,14 @@ export default function Navbar({
   searchIsOpen: boolean;
   setSearchIsOpen: (value: boolean) => void;
 }) {
+
+ 
+
   const [isActive, setIsActive] = useState(false);
   const { totalQuantity } = useCart();
   const navigate = useNavigate();
-  const [search, setSearch] = useState("");
+  const [inputValue, setInputValue] = useState("");
+  const [value, setValue] = useAtom(searchAtom);
 
   const toggleMenu = () => {
     setIsActive(!isActive);
@@ -30,39 +35,13 @@ export default function Navbar({
     setSearchIsOpen(false);
   };
 
-  function searchProduct(product: string) {
-    const products: Product[] = [];
-    coffeeApi
-      .get(`/api/collections/items/records`)
-      .then((response) => {
-        products.push(...response.data.items);
-      })
-      .finally(() => {
-        if (!products) return;
 
-        const data = products.map((product) => {
-          return {
-            name: product.name,
-            price: product.price,
-            description: product.description,
-            images: window.pb.files.getUrl(product, product.images[0]),
-            id: product.id,
-          };
-        });
-
-        const item = data.filter((item) =>
-          item.name.toLowerCase().includes(product.toLowerCase())
-        );
-        if (!item) return;
-
-        navigate(`/products`);
-      });
-  }
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    if (search === "") return;
+    if (inputValue === "") return;
     e.preventDefault();
-    searchProduct(search);
+    setValue(inputValue);
+    navigate("/products",{ state: { value } });
   };
 
   return (
@@ -109,8 +88,8 @@ export default function Navbar({
             type="search"
             id="search-box"
             placeholder="Buscar producto...."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
           />
 
           <label htmlFor="search-box" className="fas fa-search"></label>

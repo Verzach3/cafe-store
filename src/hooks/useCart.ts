@@ -38,7 +38,20 @@ export default function useCart() {
 
     const totalQuantity = cart.reduce((acc, item) => acc + item.quantity, 0)
 
-    return { cart, addToCart, removeFromCart, clearCart, totalQuantity }
+    const modifyQuantity = (id: string, quantity: number) => {
+        const newCart = cart.map((item) => {
+            if (item.id === id) {
+                return {
+                    ...item,
+                    quantity
+                }
+            }
+            return item
+        })
+        setCart(newCart)
+    }
+
+    return { cart, addToCart, removeFromCart, clearCart, totalQuantity, modifyQuantity }
 }
 
 

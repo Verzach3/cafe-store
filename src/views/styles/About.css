@@ -3,9 +3,9 @@
     align-items: center;
     background: var(--black);
     flex-wrap: wrap;
-    padding: 8rem;
+    padding: 1rem;
     margin-top: 8rem;
-    margin-bottom: 8rem;
+    margin-bottom: 1rem;
 }
 
 .about .row .image {
