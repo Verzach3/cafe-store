@@ -31,7 +31,10 @@ export function FooterLinks() {
         className={classes.link}
         component="a"
         href={link.link}
-        onClick={(event) => event.preventDefault()}
+        onClick={(event) => {
+          event.preventDefault();
+          window.open(link.link, "_blank");
+        }}
       >
         {link.label}
       </Text>
@@ -67,13 +70,22 @@ export function FooterLinks() {
         </Text>
         <Group gap={0} className={classes.social} justify="flex-end" wrap="nowrap">
           <ActionIcon size="lg" color="gray" variant="subtle">
-            <IconBrandFacebook style={{ width: rem(18), height: rem(18) }} stroke={1.5} href='https://www.facebook.com/granito.marron.factory/' />
+            <IconBrandFacebook style={{ width: rem(18), height: rem(18) }} stroke={1.5} href='https://www.facebook.com/granito.marron.factory/' onClick={(event) => {
+              event.preventDefault()
+              window.open('https://www.facebook.com/granito.marron.factory/', "_blank")
+              }} />
           </ActionIcon>
           <ActionIcon size="lg" color="gray" variant="subtle">
-            <IconBrandInstagram style={{ width: rem(18), height: rem(18) }} stroke={1.5} href='https://www.instagram.com/Henryorozco2/'/>
+            <IconBrandInstagram style={{ width: rem(18), height: rem(18) }} stroke={1.5} href='https://www.instagram.com/Henryorozco2/' onClick={(event) => {
+              event.preventDefault()
+              window.open('https://www.instagram.com/Henryorozco2/', "_blank")
+              }}/>
           </ActionIcon>
           <ActionIcon size="lg" color="gray" variant="subtle">
-            <IconBrandWhatsapp style={{ width: rem(18), height: rem(18) }} stroke={1.5} href='https://api.whatsapp.com/send?phone=573155663761&text=Hola%2C%20me%20regalas%20mas%20informacion%3F'/>
+            <IconBrandWhatsapp style={{ width: rem(18), height: rem(18) }} stroke={1.5} href='https://api.whatsapp.com/send?phone=573155663761&text=Hola%2C%20me%20regalas%20mas%20informacion%3F' onClick={(event) => {
+              event.preventDefault()
+              window.open('https://api.whatsapp.com/send?phone=573155663761&text=Hola%2C%20me%20regalas%20mas%20informacion%3F', "_blank")
+              }}/>
           </ActionIcon>
         </Group>
         <img src="/Logo_fondo_Emprender.png" alt="" />
