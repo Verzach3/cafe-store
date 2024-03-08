@@ -2,39 +2,32 @@
   margin-top: rem(120px);
   padding-top: calc(var(--mantine-spacing-xl) * 2);
   padding-bottom: calc(var(--mantine-spacing-xl) * 2);
-  background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-6));
-  border-top: rem(1px) solid light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-5));
+  background-color: #0000;
+  border-top: rem(1px) solid light-dark(var(--mantine-color-gray-9), var(--mantine-color-dark-4));;
 }
 
-.logo {
-  max-width: rem(200px);
-
-  @media (max-width: $mantine-breakpoint-sm) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
+
+
 
 .description {
   margin-top: rem(5px);
-  color: light-dark(var(--mantine-color-gray-6), var(--mantine-color-dark-1));
-  font-size: 1.2rem;
-  font-weight: 400;
-  width: rem(500px);
-  height: rem(500x);
-
-  font-family: var(--mantine-font-family);
-
+  width: rem(400px);
+  font-size: 1rem;
   @media (max-width: $mantine-breakpoint-sm) {
-    margin-top: var(--mantine-spacing-xl);
+    margin-top: var(--mantine-spacing-xs);
     text-align: center;
   }
 }
 
 .inner {
   display: flex;
-  justify-content: space-between;
+  color: #ffff;
   @media (max-width: $mantine-breakpoint-sm) {
     flex-direction: column;
     align-items: center;
@@ -44,6 +37,7 @@
 .groups {
   display: flex;
   flex-wrap: wrap;
+  color: #ffff;
   @media (max-width: $mantine-breakpoint-sm) {
     display: none;
   }
@@ -54,9 +48,10 @@
 }
 
 .link {
+  margin-left: 5rem;
   display: block;
-  color: light-dark(var(--mantine-color-gray-6), var(--mantine-color-dark-1));
-  font-size: var(--mantine-font-size-xl);
+  color: #ffff;
+  font-size: var(--mantine-font-size-md);
   padding-top: rem(3px);
   padding-bottom: rem(3px);
 
@@ -67,12 +62,15 @@
 
 .title {
   font-size: var(--mantine-font-size-xl);
-  font-weight: 800;
+  color: #ffff;
+  margin-left: 5rem;
+  font-weight: 500;
   font-family:
     Greycliff CF,
     var(--mantine-font-family);
-  margin-bottom: calc(var(--mantine-spacing-xl) / 2);
-  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+  width: rem(160px);
+  margin-bottom: calc(var(--mantine-spacing-xs) / 2);
+  text-transform: uppercase;
 }
 
 .afterFooter {
@@ -91,6 +89,48 @@
 
 .social {
   @media (max-width: $mantine-breakpoint-sm) {
+    margin-top: var(--mantine-spacing-xs);
+  }
+}
+
+.afterFooter img {
+  height: rem(90px);
+  margin-left: var(--mantine-spacing-xs);
+  margin-right: var(--mantine-spacing-xs);
+}
+
+
+@media screen and (max-width: 1000px){
+  .footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .groups {
+    display: none;
+  }
+  .link {
+    margin-left: 0;
+  }
+  .title {
+    margin-left: 0;
+  }
+  .description {
+    margin-top: var(--mantine-spacing-xs);
+    text-align: center;
+  }
+  .afterFooter img {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .afterFooter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .social {
     margin-top: var(--mantine-spacing-xs);
   }
 }

@@ -1,17 +1,27 @@
-import { Text, Container, Group } from '@mantine/core';
-
+import { Text, Container, ActionIcon, Group, rem } from '@mantine/core';
+import { IconBrandInstagram, IconBrandWhatsapp, IconBrandFacebook } from '@tabler/icons-react';
 import classes from './FooterLinks.module.css';
 
 const data = [
   {
-    title: 'Redes sociales',
+    title: "Redes sociales",
     links: [
-      { label: 'Facebook', link: '#' },
-      { label: 'Instagram', link: 'https://www.instagram.com/cafe.granito.marron/' },
-      { label: 'WhatsApp', link: '#' },
+      {
+        label: "Facebook",
+        link: "https://www.facebook.com/granito.marron.factory/",
+      },
+      {
+        label: "Instagram",
+        link: "https://www.instagram.com/Henryorozco2/",
+      },
+      {
+        label: "WhatsApp",
+        link: "https://api.whatsapp.com/send?phone=573155663761&text=Hola%2C%20me%20regalas%20mas%20informacion%3F",
+      },
     ],
   },
 ];
+
 
 export function FooterLinks() {
   const groups = data.map((group) => {
@@ -39,21 +49,35 @@ export function FooterLinks() {
     <footer className={classes.footer}>
       <Container className={classes.inner}>
         <div className={classes.logo}>
-          <h2>Café granito</h2>
-          <Text size="xs" c="dimmed" className={classes.description}>
-          En Café Granito Marrón, nos comprometemos a ofrecer a nuestros clientes productos de la más alta calidad, cultivados con cuidado y dedicación en nuestra parcela ubicada en la Vereda La Florida de Calima el Darien, a una altura de 1526 MSN. Nuestro café orgánico se cultiva de manera responsable, sin el uso de pesticidas ni químicos dañinos, garantizando así un producto puro y natural.
+          <Text size="sm" c="dimmed" className={classes.description}>
+          En Café Granito Marrón, nos comprometemos a ofrecer a nuestros
+          clientes productos de la más alta calidad, cultivados con cuidado y
+          dedicación en nuestra parcela ubicada en la Vereda La Florida de
+          Calima el Darien, a una altura de 1526 MSN. Nuestro café orgánico se
+          cultiva de manera responsable, sin el uso de pesticidas ni químicos
+          dañinos, garantizando así un producto puro y natural. 
+
           </Text>
         </div>
         <div className={classes.groups}>{groups}</div>
       </Container>
       <Container className={classes.afterFooter}>
         <Text c="dimmed" size="sm">
-          © 2024 Café granito marrón. All rights reserved.
+          © 2024 Granito Marrón. Todos los derechos reservados.
         </Text>
-
         <Group gap={0} className={classes.social} justify="flex-end" wrap="nowrap">
-          
+          <ActionIcon size="lg" color="gray" variant="subtle">
+            <IconBrandFacebook style={{ width: rem(18), height: rem(18) }} stroke={1.5} href='https://www.facebook.com/granito.marron.factory/' />
+          </ActionIcon>
+          <ActionIcon size="lg" color="gray" variant="subtle">
+            <IconBrandInstagram style={{ width: rem(18), height: rem(18) }} stroke={1.5} href='https://www.instagram.com/Henryorozco2/'/>
+          </ActionIcon>
+          <ActionIcon size="lg" color="gray" variant="subtle">
+            <IconBrandWhatsapp style={{ width: rem(18), height: rem(18) }} stroke={1.5} href='https://api.whatsapp.com/send?phone=573155663761&text=Hola%2C%20me%20regalas%20mas%20informacion%3F'/>
+          </ActionIcon>
         </Group>
+        <img src="/Logo_fondo_Emprender.png" alt="" />
+        <img src="/LOGO_PLAN_DE_DESARROLLO_COLOMBIA_POTENCIA_DE_LA_VIDA_2022-2026.png" alt="" />
       </Container>
     </footer>
   );
