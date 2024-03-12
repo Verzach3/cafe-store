@@ -1,7 +1,7 @@
 import {AppShell} from "@mantine/core";
-import Header from "./Header/Header.tsx";
 import {Outlet} from "react-router-dom";
-import {FooterLinks} from "./Footer/Footer.tsx";
+import { Header } from "./Header.tsx";
+import { Footer } from "./Footer.tsx";
 
 function Layout() {
   return (
@@ -11,7 +11,7 @@ function Layout() {
       </AppShell.Header>
       <AppShell.Main>
         <Outlet/>
-        <FooterLinks/>
+        <Footer/>
       </AppShell.Main>
     </AppShell>
   )

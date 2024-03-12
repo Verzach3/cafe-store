@@ -17,6 +17,7 @@ export type Item = {
     price:          string;
     updated:        string;
     expand:         expand;
+    previous_value: string;
 }
 
 export type Product = {
@@ -25,6 +26,7 @@ export type Product = {
     description: string;
     images: string;
     id : string;
+    previous_value: string;
 }
 
 export type ProductCart = {
@@ -45,5 +47,4 @@ export type category_id = {
     id: string;
     name: string;
 }
-
 

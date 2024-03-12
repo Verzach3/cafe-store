@@ -1,0 +1,32 @@
+.Product {
+    background-color: #EAD7BB;
+}
+
+.Pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+}
+
+.Filter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.Loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+    margin-left: 45rem;
+}
+
+@media screen and (max-width: 768px) {
+    .Loader {
+        margin-left: 11rem;
+    }
+    
+}
