@@ -21,8 +21,8 @@ export default function Products() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const initialPage = new URLSearchParams(search).get('page'); 
-    const pageNumber = parseInt(initialPage || '1', 10);
+    const initialPage = new URLSearchParams(search).get("page");
+    const pageNumber = parseInt(initialPage || "1", 10);
     setPage(pageNumber);
     setLoading(true);
     const fetchData = async (page: number) => {
@@ -42,7 +42,7 @@ export default function Products() {
         });
     };
     fetchData(pageNumber);
-  }, [search]); 
+  }, [search]);
 
   const onFilterChange = (id: string) => {
     setLoading(true);
@@ -93,7 +93,11 @@ export default function Products() {
         <Filter onFilterChange={onFilterChange} />
       </div>
       {loading ? (
-        <Loader color="rgb(17, 57, 70)" type="dots" className={classes.Loader}/>
+        <Loader
+          color="rgb(17, 57, 70)"
+          type="dots"
+          className={classes.Loader}
+        />
       ) : (
         <SimpleGrid
           cols={{ base: 1, sm: 2, lg: 3 }}
@@ -101,7 +105,9 @@ export default function Products() {
           verticalSpacing={{ base: "md", sm: "xs" }}
         >
           {product.map((product) => (
-            <Card product={product} key={product.id} />
+            <div className={classes.CardEffect}>
+              <Card product={product} key={product.id} />
+            </div>
           ))}
         </SimpleGrid>
       )}
