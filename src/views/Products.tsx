@@ -7,7 +7,7 @@ import Card from "../components/Card";
 import { HeroImageBackground } from "../components/HeroImageBackground";
 
 import classes from "./Products.module.css";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { coffeeApi } from "../api/coffeApi";
 import Filter from "../components/Filter";
 import { Loader } from "@mantine/core";
@@ -17,18 +17,21 @@ export default function Products() {
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
-  const history = useNavigate();
+  const { search } = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
+    const initialPage = new URLSearchParams(search).get('page'); 
+    const pageNumber = parseInt(initialPage || '1', 10);
+    setPage(pageNumber);
     setLoading(true);
     const fetchData = async (page: number) => {
       coffeeApi
-        .get(`/api/collections/items/records?page=${page}&perPage=`)
+        .get(`/api/collections/items/records?page=${page}&perPage=3`)
         .then((response) => {
           const data = transformProduct(response.data.items);
           setProduct(data);
           setTotalPages(response.data.totalPages);
-          history(`/products?page=${page}`);
         })
         .finally(() => {
           window.scrollTo(0, 0);
@@ -38,8 +41,8 @@ export default function Products() {
           console.log(error);
         });
     };
-    fetchData(page);
-  }, [page, history]);
+    fetchData(pageNumber);
+  }, [search]); 
 
   const onFilterChange = (id: string) => {
     setLoading(true);
@@ -50,7 +53,6 @@ export default function Products() {
           const data = transformProduct(response.data.items);
           setProduct(data);
           setTotalPages(response.data.totalPages);
-          history(`/products`);
         })
         .finally(() => {
           setLoading(false);
@@ -80,7 +82,6 @@ export default function Products() {
           };
         });
         setProduct(newProduct);
-        //history(`/products/category/${id}`);
         setLoading(false);
       });
   };
@@ -106,7 +107,10 @@ export default function Products() {
       )}
       <Pagination
         value={page}
-        onChange={setPage}
+        onChange={(value) => {
+          setPage(value);
+          navigate(`/products?page=${value}`);
+        }}
         total={totalPages}
         className={classes.Pagination}
       />
