@@ -1,137 +1,115 @@
 import { useEffect, useState } from "react";
-import useProducts from "../hooks/useProducts";
-import { Item, Product } from "../types/types";
-import { transformProduct } from "../helper/transformProduct";
-import Card from "../components/Cards/Card";
+import { SimpleGrid } from "@mantine/core";
+import { Pagination } from "@mantine/core";
+import { Product, Item } from "../types/types";
+import { transformProduct } from "../helper/transformProducts";
+import Card from "../components/Card";
+import { HeroImageBackground } from "../components/HeroImageBackground";
+
+import classes from "./Products.module.css";
+import { useNavigate } from "react-router-dom";
+import { coffeeApi } from "../api/coffeApi";
+import Filter from "../components/Filter";
 import { Loader } from "@mantine/core";
-//import { SearchAndFilter } from "../components/Filter/SearchAndFilter";
-import { coffeeApi } from "../api/poketbaseApi";
-import GradientSegmentedControl from "../components/Filter/Filter";
-import "./styles/Products.css";
-import { useAtom } from "jotai";
-import { searchAtom } from "../lib/atoms";
 
 export default function Products() {
-  const { data, loading } = useProducts("/api/collections/items/records");
-  const [products, setProducts] = useState<Product[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [value] = useAtom(searchAtom);
+  const [product, setProduct] = useState<Product[]>([]);
+  const [totalPages, setTotalPages] = useState(1);
+  const [loading, setLoading] = useState(false);
+  const [page, setPage] = useState(1);
+  const history = useNavigate();
 
   useEffect(() => {
-    (() => {
-      if (data.length > 0) {
-        const res = transformProduct(data);
-        setProducts(res);
-      }
-    })();
-  }, [data]);
-
-  useEffect(() => {
-    function search(name: string) {
-      if (name === "") return;
-      setIsLoading(true);
-      const item: Product[] = [];
+    setLoading(true);
+    const fetchData = async (page: number) => {
       coffeeApi
-        .get(`/api/collections/items/records`)
+        .get(`/api/collections/items/records?page=${page}&perPage=`)
         .then((response) => {
-          item.push(...response.data.items);
+          const data = transformProduct(response.data.items);
+          setProduct(data);
+          setTotalPages(response.data.totalPages);
+          history(`/products?page=${page}`);
         })
         .finally(() => {
-          const data = item.map((product) => {
-            return {
-              name: product.name,
-              price: product.price,
-              description: product.description,
-              images: window.pb.files.getUrl(product, product.images[0]),
-              id: product.id,
-            };
-          });
-          if (!item) return;
-          const result = data.filter((product) =>
-            product.name.toLowerCase().includes(name.toLowerCase())
-          );
-          setProducts(result);
-          setIsLoading(false);
+          window.scrollTo(0, 0);
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.log(error);
         });
-    }
-    search(value);
-  }, [value]);
+    };
+    fetchData(page);
+  }, [page, history]);
 
-  const onChangeProducts = (id: string) => {
-    setIsLoading(true);
-    const products: Item[] = [];
-    let data;
-    if (!id) return;
+  const onFilterChange = (id: string) => {
+    setLoading(true);
     if (id === "Todos") {
       coffeeApi
         .get("/api/collections/items/records")
         .then((response) => {
-          products.push(...response.data.items);
-        })
-        .catch((error) => {
-          console.log(error);
+          const data = transformProduct(response.data.items);
+          setProduct(data);
+          setTotalPages(response.data.totalPages);
+          history(`/products`);
         })
         .finally(() => {
-          if (!products) return;
-          data = products.map((product) => {
-            return {
-              name: product.name,
-              price: product.price,
-              description: product.description,
-              images: window.pb.files.getUrl(product, product.images[0]),
-              id: product.id,
-            };
-          });
-          setProducts(data);
-          setIsLoading(false);
+          setLoading(false);
         });
       return;
     }
+    const data: Item[] = [];
     coffeeApi
       .get(
-        `/api/collections/items_categories/records?filter=(category_id='${id}' )&expand=item_id`
+        `/api/collections/items_categories/records?expand=item_id&filter=(category_id="${id}")`
       )
       .then((response) => {
-        products.push(...response.data.items);
-      })
-      .catch((error) => {
-        console.log(error);
+        data.push(...response.data.items);
       })
       .finally(() => {
-        if (!products) return;
-        data = products.map((product) => {
+        const newProduct = data.map((item) => {
           return {
-            name: product.expand.item_id.name,
-            price: product.expand.item_id.price,
-            description: product.expand.item_id.description,
+            id: item.expand.item_id.id,
+            name: item.expand.item_id.name,
+            price: item.expand.item_id.price,
+            description: item.expand.item_id.description,
             images: window.pb.files.getUrl(
-              product.expand.item_id,
-              product.expand.item_id.images[0]
+              item.expand.item_id,
+              item.expand.item_id.images[0]
             ),
-            id: product.expand.item_id.id,
+            previous_value: item.expand.item_id.previous_value,
           };
         });
-        setProducts(data);
-        setIsLoading(false);
+        setProduct(newProduct);
+        //history(`/products/category/${id}`);
+        setLoading(false);
       });
   };
 
   return (
-    <>
-      <div className="filter">
-        <GradientSegmentedControl onChangeProducts={onChangeProducts} />
+    <div className={classes.Product}>
+      <HeroImageBackground />
+      <div className={classes.Filter}>
+        <Filter onFilterChange={onFilterChange} />
       </div>
-      {loading || isLoading ? (
-        <div className="loader">
-          <Loader color="rgb(255, 0, 0)" size="lg" type="bars" />
-        </div>
+      {loading ? (
+        <Loader color="rgb(17, 57, 70)" type="dots" className={classes.Loader}/>
       ) : (
-        <section className="products" id="products">
-          {products.map((product) => (
+        <SimpleGrid
+          cols={{ base: 1, sm: 2, lg: 3 }}
+          spacing={{ base: 10, sm: "xl" }}
+          verticalSpacing={{ base: "md", sm: "xs" }}
+        >
+          {product.map((product) => (
             <Card product={product} key={product.id} />
           ))}
-        </section>
+        </SimpleGrid>
       )}
-    </>
+      <Pagination
+        value={page}
+        onChange={setPage}
+        total={totalPages}
+        className={classes.Pagination}
+      />
+    </div>
   );
 }

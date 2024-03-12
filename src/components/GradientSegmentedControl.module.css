@@ -1,0 +1,30 @@
+.root {
+    background-color: #113946;
+    box-shadow: #BCA37F 0px 0px 0px 1px inset;  
+    align-items: center;
+  }
+
+  
+  .indicator {
+    background-image: linear-gradient(
+      to right,
+      #BCA37F,
+      #FFF2D8
+    );
+  }
+  
+  .control {
+    &::before {
+      display: none;
+    }
+  }
+  
+  .label {
+    color: var(--mantine-color-white);
+    &,
+    &:hover {
+      &[data-active] {
+        color: var(--mantine-color-white);
+      }
+    }
+  }

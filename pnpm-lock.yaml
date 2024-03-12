@@ -29,24 +29,15 @@ dependencies:
   '@mantine/notifications':
     specifier: ^7.5.1
     version: 7.5.1(@mantine/core@7.5.1)(@mantine/hooks@7.5.1)(react-dom@18.2.0)(react@18.2.0)
-  '@mantinex/mantine-logo':
-    specifier: ^1.0.1
-    version: 1.0.1(@mantine/core@7.5.1)(@mantine/hooks@7.5.1)(react-dom@18.2.0)(react@18.2.0)
-  '@tabler/core':
-    specifier: 1.0.0-beta20
-    version: 1.0.0-beta20
   '@tabler/icons-react':
-    specifier: ^2.47.0
-    version: 2.47.0(react@18.2.0)
+    specifier: ^3.0.0
+    version: 3.0.0(react@18.2.0)
   axios:
     specifier: ^1.6.7
     version: 1.6.7
   dayjs:
     specifier: ^1.11.10
     version: 1.11.10
-  embla-carousel-autoplay:
-    specifier: ^7.1.0
-    version: 7.1.0(embla-carousel@7.1.0)
   embla-carousel-react:
     specifier: 7.1.0
     version: 7.1.0(react@18.2.0)
@@ -553,20 +544,6 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@mantinex/mantine-logo@1.0.1(@mantine/core@7.5.1)(@mantine/hooks@7.5.1)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-t5Lp4Bpae+EVydBr5n0bDG6EXhQ3QY/fw29PCvnwn9LwWReIaYUKhQ4mRINyb7ted2R3MuG7VS1MZQcJ1Qh6Cg==}
-    peerDependencies:
-      '@mantine/core': '>=7.0.0'
-      '@mantine/hooks': '>=7.0.0'
-      react: ^18.2.0
-      react-dom: ^18.2.0
-    dependencies:
-      '@mantine/core': 7.5.1(@mantine/hooks@7.5.1)(@types/react@18.2.55)(react-dom@18.2.0)(react@18.2.0)
-      '@mantine/hooks': 7.5.1(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: false
-
   /@nodelib/fs.scandir@2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
     engines: {node: '>= 8'}
@@ -587,10 +564,6 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.17.1
     dev: true
-
-  /@popperjs/core@2.11.8:
-    resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
-    dev: false
 
   /@remix-run/router@1.15.0:
     resolution: {integrity: sha512-HOil5aFtme37dVQTB6M34G95kPM3MMuqSmIRVCC52eKV+Y/tGSqw9P3rWhlAx6A+mz+MoX+XxsGsNJbaI5qCgQ==}
@@ -824,80 +797,17 @@ packages:
     resolution: {integrity: sha512-myfUej5naTBWnqOCc/MdVOLVjXUXtIA+NpDrDBKJtLLg2shUjBu3cZmB/85RyitKc55+lUUyl7oRfLOvkr2hsw==}
     dev: true
 
-  /@tabler/core@1.0.0-beta20:
-    resolution: {integrity: sha512-OzKpur+Ug7e+HMbNJrMcSuWZGUsJTvu7HYboBNRE8qyo1RKIWqvwL5YewKBJ+odW5pDOqBPzbsS4je3EBQQxHw==}
-    engines: {node: '>=18'}
-    peerDependencies:
-      '@melloware/coloris': ^0.19.1
-      apexcharts: ^3.40.0
-      autosize: ^6.0.1
-      choices.js: ^10.2.0
-      countup.js: ^2.6.2
-      dropzone: ^6.0.0-beta.2
-      flatpickr: ^4.6.13
-      fslightbox: ^3.4.1
-      imask: ^6.6.1
-      jsvectormap: ^1.5.3
-      list.js: ^2.3.1
-      litepicker: ^2.0.12
-      nouislider: ^15.7.0
-      plyr: ^3.7.8
-      star-rating.js: ^4.3.0
-      tinymce: ^6.4.2
-      tom-select: ^2.2.2
-    peerDependenciesMeta:
-      '@melloware/coloris':
-        optional: true
-      apexcharts:
-        optional: true
-      autosize:
-        optional: true
-      choices.js:
-        optional: true
-      countup.js:
-        optional: true
-      dropzone:
-        optional: true
-      flatpickr:
-        optional: true
-      fslightbox:
-        optional: true
-      imask:
-        optional: true
-      jsvectormap:
-        optional: true
-      list.js:
-        optional: true
-      litepicker:
-        optional: true
-      nouislider:
-        optional: true
-      plyr:
-        optional: true
-      star-rating.js:
-        optional: true
-      tinymce:
-        optional: true
-      tom-select:
-        optional: true
-    dependencies:
-      '@popperjs/core': 2.11.8
-      '@tabler/icons': 2.47.0
-      bootstrap: 5.3.1(@popperjs/core@2.11.8)
-    dev: false
-
-  /@tabler/icons-react@2.47.0(react@18.2.0):
-    resolution: {integrity: sha512-iqly2FvCF/qUbgmvS8E40rVeYY7laltc5GUjRxQj59DuX0x/6CpKHTXt86YlI2whg4czvd/c8Ce8YR08uEku0g==}
+  /@tabler/icons-react@3.0.0(react@18.2.0):
+    resolution: {integrity: sha512-KI3rFTvH6k/4fJVVegvqdqiaaPyo2YZ4X/4A0HExwJKfqZrUeZZHB2/iCTXnvecI9REWrexmFlyYMpthA9dEDw==}
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0
     dependencies:
-      '@tabler/icons': 2.47.0
-      prop-types: 15.8.1
+      '@tabler/icons': 3.0.0
       react: 18.2.0
     dev: false
 
-  /@tabler/icons@2.47.0:
-    resolution: {integrity: sha512-4w5evLh+7FUUiA1GucvGj2ReX2TvOjEr4ejXdwL/bsjoSkof6r1gQmzqI+VHrE2CpJpB3al7bCTulOkFa/RcyA==}
+  /@tabler/icons@3.0.0:
+    resolution: {integrity: sha512-DT27tfUt7v6wqn+NVBp5zSxYwfVuyImdgih0ULTbs0qQrAANmjobyMSrD+ATWvIsS5QuhbA+lX4hv8pEe7Lm/w==}
     dev: false
 
   /@types/estree@1.0.5:
@@ -1147,14 +1057,6 @@ packages:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
     dev: true
 
-  /bootstrap@5.3.1(@popperjs/core@2.11.8):
-    resolution: {integrity: sha512-jzwza3Yagduci2x0rr9MeFSORjcHpt0lRZukZPZQJT1Dth5qzV7XcgGqYzi39KGAVYR8QEDVoO0ubFKOxzMG+g==}
-    peerDependencies:
-      '@popperjs/core': ^2.11.8
-    dependencies:
-      '@popperjs/core': 2.11.8
-    dev: false
-
   /brace-expansion@1.1.11:
     resolution: {integrity: sha512-iCuPHDFgrHX7H2vEI/5xpz07zSHB00TpugqhmYtVmMO6518mCuRMoOYFldEBl0g187ufozdaHgWKcYFb61qGiA==}
     dependencies:
@@ -1286,14 +1188,6 @@ packages:
     dependencies:
       '@babel/runtime': 7.23.9
       csstype: 3.1.3
-    dev: false
-
-  /embla-carousel-autoplay@7.1.0(embla-carousel@7.1.0):
-    resolution: {integrity: sha512-nYfgSGn3ek44OzwO0t/Ptuxq4PNPD5l7Y9X7JjLYI/DN1uGjqxz9L73YYqR6YCRDnTYJ88s9fep48dzBnSG4vQ==}
-    peerDependencies:
-      embla-carousel: 7.1.0
-    dependencies:
-      embla-carousel: 7.1.0
     dev: false
 
   /embla-carousel-react@7.1.0(react@18.2.0):

@@ -1,0 +1,70 @@
+.cardComponent-container {
+    text-align: center;
+    border : #113946 1px solid;
+    border-radius: 10px;
+    background-color: #FFF2D8; 
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    margin-top: 5rem;
+    margin: 1rem;
+}
+
+.box-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.box-container .box {
+    width: 150px;
+}
+
+.box-container .box .icons .btn-cart {
+    color: #EAD7BB;
+    line-height: 5rem;
+    margin: .3rem;
+    margin-top: 3rem;
+}
+
+
+.box-container .box .icons .btn-cart:hover {
+    color: #FFF2D8;
+    transition: .3s;
+}
+
+
+.box-container .box .image{
+    padding: 1.5rem;
+}
+
+.box-container .box .image img {
+    height: 150px;
+    border-radius: 1rem;
+}
+
+.box-container .box .content h3{
+    color: #113946;
+    font-size: 1.4rem;
+}
+
+.box-container .box .content .stars{
+    padding: 0.2rem;
+}
+
+.box-container .box .content .stars i{
+    font-size: 1.2rem;
+    color: var(--main-color);
+}
+
+
+.box-container .box .content .price{
+    color: #113946;
+    font-size: 1.4rem;
+}
+
+
+.box-container .box .content .price span{
+    text-decoration: line-through;
+    font-weight: lighter;
+    font-size: 1.5rem;
+}
