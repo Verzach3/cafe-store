@@ -1,9 +1,13 @@
-import { useState } from 'react';
-import { Container, Group, Burger } from '@mantine/core';
+import { useEffect, useState } from 'react';
+import { Container, Group, Burger, Drawer, ActionIcon } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { FaShoppingCart } from "react-icons/fa";
-
 import classes from './HeaderSimple.module.css';
+import Cart from './Cart';
+import useFetch from '../hooks/useFetch';
+import { ProductCart } from '../types/types';
+import { transformProductCart } from '../helper/transformProducts';
+
 
 const links = [
   { link: '/', label: 'Inicio' },
@@ -13,10 +17,18 @@ const links = [
 ];
 
 export function Header() {
-  const [opened, { toggle }] = useDisclosure(false);
+  const [opened, { toggle }] = useDisclosure();
+  const [openeStore, {toggle : storeFunction} ] = useDisclosure();
   const [active, setActive] = useState(links[0].link);
+  const { data } = useFetch("/api/collections/items/records");
+  const [product, setProduct] = useState<ProductCart[]>([]);
 
-  
+  useEffect(() => {
+    if (data) {
+      const res = transformProductCart(data);
+      setProduct(res);
+    }
+}, [data]);
   
 
   const items = links.map((link) => (
@@ -40,16 +52,29 @@ export function Header() {
       <Container size="md" className={classes.inner}>
         <Group gap={5} visibleFrom="xs">
           {items}
-        </Group>
-        <div className={classes.Notification}>
-          <p>10</p>
+          <div className={classes.ShoppingCart}>
+          <ActionIcon variant="transparent" size={'sm'} onClick={(event)=> {
+            event.preventDefault();
+            storeFunction();
+          }}>
+            <FaShoppingCart style={{ width: '200%', height: '200' }} color='#283618'/>
+          </ActionIcon>
+          <Cart products={product} openCart={openeStore} close={storeFunction}/> 
         </div>
-        <FaShoppingCart className={classes.ShoppingCart} size={25} onClick={(event)=>{
-          event.preventDefault();
-          window.open('/cart', '_self');
-        }}/>
+        </Group>
 
-        <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm"  />
+        <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />
+        <Drawer 
+        opened={opened} 
+        onClose={toggle} 
+        title="Menu" size={"xs"} 
+        transitionProps={{ transition: 'fade', duration: 150, timingFunction: 'linear' }}
+        >
+          <div className={classes.drawer}>
+            {items}
+          </div>
+        </Drawer>
+        
       </Container>
     </header>
   );

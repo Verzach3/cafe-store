@@ -1,0 +1,85 @@
+/* Card Container */
+.CardContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 16px;
+    padding: 16px;  
+    max-width: 80%;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+  
+    /* Card Image */
+    .CardImage {
+        width: 100%;
+        height: 200px;
+        background-color: #f5f5f5;
+        border-radius: 4px;
+        margin-bottom: 16px;
+        }
+    
+    .CardImage img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+    
+  
+  /* Card Info */
+  .CardInfo {
+    display: flex;
+    flex-direction: column;
+    margin-top: 16px;
+  }
+  
+  /* Card Title */
+  .CardTitle p {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  /* Card Price */
+  .CardPrice p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 8px;
+  }
+  
+  /* Price Slider */
+  .PriceSlider {
+    margin-top: 8px;
+  }
+  
+  /* Delete Button */
+  .DeleteButton {
+    margin-top: 16px;
+  }
+  
+  /* Summary */
+  .Summary {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+    padding: 16px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+  }
+  
+  .Quantity p,
+  .Total p {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+  
+  .Quantity p:last-child,
+  .Total p:last-child {
+    font-size: 14px;
+    font-weight: normal;
+    color: #666;
+  }

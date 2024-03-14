@@ -1,6 +1,6 @@
 .root {
     background-color: #113946;
-    box-shadow: #BCA37F 0px 0px 0px 1px inset;  
+    box-shadow: #c6ac8f 0px 0px 0px 1px inset;  
     align-items: center;
   }
 
@@ -8,8 +8,8 @@
   .indicator {
     background-image: linear-gradient(
       to right,
-      #BCA37F,
-      #FFF2D8
+      #22333b,
+      #0a0908
     );
   }
   

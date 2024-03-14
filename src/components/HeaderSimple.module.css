@@ -1,6 +1,6 @@
 .header {
     height: rem(57px);
-    background-color: #FFF2D8;
+    background-color: #eae0d5;
     margin-bottom: 0.01rem;
   }
 
@@ -21,48 +21,23 @@
       justify-content: space-between;
       align-items: center;
     }
+
+    
   }
 
- .ShoppingCart {
-    position: absolute;
-    left: 80rem;
-    cursor: pointer;
-  }
-
-  @media screen and (max-width: 768px) {
+  @media (max-width: $mantine-breakpoint-sm) {
     .ShoppingCart {
       position: absolute;
       left: 17rem;
     }
-    
   }
 
-  .Notification {
+ .ShoppingCart {
     position: absolute;
-    left: 81.3rem;
-    bottom:1.5rem;
-    cursor: pointer;
-    background-color: #BCA37F;
-    color: white;
-    padding: 0.01rem 0.8rem;
-    border-radius: 50%;
+    left: 60rem;
   }
 
-  .Notification p {
-    margin: 0.2px;
-    color: #113946;
-  }
-
-
-  @media screen and (max-width: 768px) {
-    .Notification {
-      position: absolute;
-      left: 18.5rem;
-      bottom:1.5rem;
-    }
-    
-  }
-
+  
   
   
   .link {
@@ -73,10 +48,10 @@
     text-decoration: none;
     font-size: var(--mantine-font-size-sm);
     font-weight: 500;
-    color: #113946;
+    color: #22333b;
   
     [data-mantine-color-scheme] &[data-active] {
-      background-color: #113946;
+      background-color: #22333b;
       color: var(--mantine-color-white);
     }
   }

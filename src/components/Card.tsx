@@ -14,7 +14,7 @@ export default function Card({ product }: { product: Product }) {
           <div className="box">
             <div className="icons">
               <Button
-                color="rgb(17, 57, 70)"
+                color="#22333b"
                 className="btn-cart"
                 size={"xl"}
                 onClick={() => console.log("Añadir al carrito")}
