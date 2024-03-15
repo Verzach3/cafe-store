@@ -11,9 +11,13 @@ export default function Cart({
   close: () => void;
 }) {
   const { cart: products, removeFromCart, modifyQuantity } = useCart();
-  const total = products.reduce(
-    (acc, product) => acc + parseFloat(product.price) * product.quantity, 0.0);
   
+  const total = products.reduce(
+    (acc, product) =>
+      acc + parseFloat(product.price.replace(/\./g, '')) * product.quantity,
+    0.0
+  );
+
   const quantity = products.reduce( (acc, product) => acc + product.quantity, 0);
   return (
     <Drawer
@@ -75,7 +79,7 @@ export default function Cart({
           </div>
           <div className={classes.Total}>
             <p>Total</p>
-            <p>${total}</p>
+            <p>{new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(total)}</p>
           </div>
         </div>
         <Button fullWidth color="green" style={{ marginTop: 10 }} onClick={(event)=> {
