@@ -1,16 +1,20 @@
 import { Button, Drawer, Slider } from "@mantine/core";
-import { ProductCart } from "../types/types";
 
 import classes from "./Cart.module.css";
+import useCart from "../hooks/useCart";
+
 export default function Cart({
   openCart,
   close,
-  products,
 }: {
   openCart: boolean;
   close: () => void;
-  products: ProductCart[];
 }) {
+  const { cart: products, removeFromCart, modifyQuantity } = useCart();
+  const total = products.reduce(
+    (acc, product) => acc + parseFloat(product.price) * product.quantity, 0.0);
+  
+  const quantity = products.reduce( (acc, product) => acc + product.quantity, 0);
   return (
     <Drawer
       opened={openCart}
@@ -37,11 +41,18 @@ export default function Cart({
                   { value: 50, label: "50" },
                   { value: 80, label: "80" },
                 ]}
+                defaultValue={product.quantity}
+                max={100}
+                min={1}
+                onChange={(value) => modifyQuantity(product.id, value)}
               />
             </div>
           </div>
           <div className={classes.DeleteButton}>
-            <Button fullWidth color="red" style={{ marginTop: 10 }}>
+            <Button fullWidth color="red" style={{ marginTop: 10 }} onClick={(event)=> {
+              event.preventDefault();
+              removeFromCart(product.id);
+            }}>
               Eliminar
             </Button>
           </div>
@@ -51,14 +62,17 @@ export default function Cart({
         <div className={classes.Summary}>
           <div className={classes.Quantity}>
             <p>Cantidad de productos</p>
-            <p>2</p>
+            <p>{quantity}</p>
           </div>
           <div className={classes.Total}>
             <p>Total</p>
-            <p>$ 200.000</p>
+            <p>${total}</p>
           </div>
         </div>
-        <Button fullWidth color="green" style={{ marginTop: 10 }}>
+        <Button fullWidth color="green" style={{ marginTop: 10 }} onClick={(event)=> {
+          event.preventDefault();
+          window.location.href='https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+        }}>
           Comprar
         </Button>
       </div>

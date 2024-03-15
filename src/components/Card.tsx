@@ -2,11 +2,16 @@
 import { FaCartPlus } from "react-icons/fa";
 import { PiStarThin } from "react-icons/pi";
 import { Button } from "@mantine/core";
+import '@mantine/notifications/styles.css';
 
 import "./styles/Card.css";
 import { Product } from "../types/types";
+import useCart from "../hooks/useCart";
+
 export default function Card({ product }: { product: Product }) {
-  //const { addToCart } = useCart();
+
+  const { addToCart } = useCart();
+  
   return (
     <>
       <div className="cardComponent-container">
@@ -17,7 +22,9 @@ export default function Card({ product }: { product: Product }) {
                 color="#22333b"
                 className="btn-cart"
                 size={"xl"}
-                onClick={() => console.log("Añadir al carrito")}
+                onClick={() => {
+                  addToCart(product, 1)
+                }}
               >
                 Añadir <FaCartPlus />
               </Button>
