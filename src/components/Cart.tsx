@@ -1,4 +1,4 @@
-import { Button, Drawer, Slider } from "@mantine/core";
+import { Button, Drawer,Input } from "@mantine/core";
 
 import classes from "./Cart.module.css";
 import useCart from "../hooks/useCart";
@@ -32,20 +32,25 @@ export default function Cart({
             <div className={classes.CardPrice}>
               <p>{product.price}</p>
             </div>
-            <div className={classes.PriceSlider}>
-              <Slider
-                color="rgba(0, 0, 0, 1)"
-                size="xs"
-                marks={[
-                  { value: 20, label: "20" },
-                  { value: 50, label: "50" },
-                  { value: 80, label: "80" },
-                ]}
-                defaultValue={product.quantity}
-                max={100}
-                min={1}
-                onChange={(value) => modifyQuantity(product.id, value)}
-              />
+            <div className={classes.PriceButtons}>
+              <Button  onClick={(event)=>{
+                event.preventDefault();
+                modifyQuantity(product.id, product.quantity+1);
+              }}>+</Button>
+              <Input placeholder="Ingrese la cantidad que desea" type="number" value={product.quantity} onChange={(event)=>{
+                event.preventDefault();
+                if (parseInt(event.currentTarget.value) > 0)
+                modifyQuantity(product.id, parseInt(event.currentTarget.value));
+              }}/>
+              <Button onClick={(event)=>{
+                event.preventDefault();
+                if (product.quantity > 1)
+                modifyQuantity(product.id, product.quantity-1);
+              }}>-</Button>
+            </div>
+            <div className={classes.Quantity}>
+              <p>Cantidad</p>
+              <p>{product.quantity}</p>
             </div>
           </div>
           <div className={classes.DeleteButton}>

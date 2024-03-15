@@ -11,6 +11,15 @@
     margin: 0 auto;
     margin-top: 20px;
   }
+
+
+  /* Card PriceButton */
+  .PriceButtons {
+    display: flex;
+    justify-content: center;
+    margin-top: 12px;
+    padding: 2rem;
+  }
   
     /* Card Image */
     .CardImage {
@@ -82,4 +91,10 @@
     font-size: 14px;
     font-weight: normal;
     color: #666;
+  }
+
+  .CardInfo .Quantity p {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 4px;
   }
