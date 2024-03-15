@@ -71,7 +71,7 @@ export default function Cart({
         </div>
         <Button fullWidth color="green" style={{ marginTop: 10 }} onClick={(event)=> {
           event.preventDefault();
-          window.location.href='https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+          window.location.href='#';
         }}>
           Comprar
         </Button>
