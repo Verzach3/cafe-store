@@ -37,7 +37,11 @@ export default function Cart({
                 event.preventDefault();
                 modifyQuantity(product.id, product.quantity+1);
               }}>+</Button>
-              <Input placeholder="Ingrese la cantidad que desea" type="number" value={product.quantity} onChange={(event)=>{
+              <Input placeholder="Ingrese la cantidad que desea" type="number" style = {
+                {width: "100px", textAlign: "center", margin: "0 10px", padding: "0", height: "30px",
+                  textAlignLast: "center"
+              }
+              } value={product.quantity} onChange={(event)=>{
                 event.preventDefault();
                 if (parseInt(event.currentTarget.value) > 0)
                 modifyQuantity(product.id, parseInt(event.currentTarget.value));

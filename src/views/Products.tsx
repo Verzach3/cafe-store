@@ -27,7 +27,7 @@ export default function Products() {
     setLoading(true);
     const fetchData = async (page: number) => {
       coffeeApi
-        .get(`/api/collections/items/records?page=${page}&perPage=6`)
+        .get(`/api/collections/items/records?page=${page}&perPage=12`)
         .then((response) => {
           const data = transformProduct(response.data.items);
           setProduct(data);
@@ -100,9 +100,9 @@ export default function Products() {
         />
       ) : (
         <SimpleGrid
-          cols={{ base: 1, sm: 2, lg: 3 }}
-          spacing={{ base: 10, sm: "xl" }}
-          verticalSpacing={{ base: "md", sm: "xs" }}
+          cols={{ base: 1, sm: 2, lg: 4 }}
+          spacing={{ base: 10, sm: "md" }}
+          verticalSpacing={{ base: "md", sm: "md" }}
         >
           {product.map((product) => (
             <div className={classes.CardEffect} key={product.id}>
