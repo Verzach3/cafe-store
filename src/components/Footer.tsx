@@ -1,5 +1,5 @@
 import { Text, Container, ActionIcon, Group, rem } from '@mantine/core';
-import { IconBrandYoutube, IconBrandInstagram, IconBrandWhatsapp } from '@tabler/icons-react';
+import { IconBrandInstagram, IconBrandWhatsapp, IconBrandFacebook } from '@tabler/icons-react';
 import classes from './FooterLinks.module.css';
 
 const data = [
@@ -74,9 +74,9 @@ export function Footer() {
             }}/>
           </ActionIcon>
           <ActionIcon size="lg" color="gray" variant="subtle">
-            <IconBrandYoutube style={{ width: rem(18), height: rem(18) }} stroke={1.5} onClick={(event)=> {
+            <IconBrandFacebook style={{ width: rem(18), height: rem(18) }} stroke={1.5} onClick={(event)=> {
               event.preventDefault()
-              window.open('https://www.youtube.com/channel/UCvJ6yG1n7Q6V8Q1c9wJ8Y9w', "_blank")
+              window.open('https://www.facebook.com/granito.marron.factory/', "_blank")
             }}/>
           </ActionIcon>
           <ActionIcon size="lg" color="gray" variant="subtle">
