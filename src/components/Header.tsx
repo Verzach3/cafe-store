@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Container, Group, Burger, Drawer, ActionIcon } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { FaShoppingCart } from "react-icons/fa";
@@ -15,17 +14,17 @@ const links = [
 export function Header() {
   const [opened, { toggle }] = useDisclosure();
   const [openStore, { toggle: storeFunction }] = useDisclosure();
-  const [active, setActive] = useState(links[0].link);
+
+
+
 
   const items = links.map((link) => (
     <a
       key={link.label}
       href={link.link}
-      className={classes.link}
-      data-active={active === link.link || undefined}
+      className={`${classes.link} ${classes.link}:hover`}
       onClick={(event) => {
         event.preventDefault();
-        setActive(link.link);
         window.open(link.link, "_self");
       }}
     >
