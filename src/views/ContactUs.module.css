@@ -5,9 +5,10 @@
       #5e503f 0%,
       #22333b 100%
     );
+    margin-top: 3rem;
     border-radius: var(--mantine-radius-md);
     padding: calc(var(--mantine-spacing-xl) * 2.5);
-  
+
     @media (max-width: $mantine-breakpoint-sm) {
       padding: calc(var(--mantine-spacing-xl) * 1.5);
     }
@@ -42,7 +43,7 @@
   }
   
   .social {
-    color: #113946;
+    color: #eae0d5;
   
     @mixin hover {
       color: #113946;

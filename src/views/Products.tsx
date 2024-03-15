@@ -94,7 +94,7 @@ export default function Products() {
       </div>
       {loading ? (
         <Loader
-          color="rgb(17, 57, 70)"
+          color="#eae0d5"
           type="dots"
           className={classes.Loader}
         />
