@@ -36,6 +36,7 @@ export type ProductCart = {
     images: string;
     id : string;
     quantity: number;
+    previous_value: string;
 }
 
 type expand = {

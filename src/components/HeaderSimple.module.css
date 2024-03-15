@@ -1,82 +1,57 @@
 .header {
-    height: rem(57px);
-    background-color: #FFF2D8;
-    margin-bottom: 0.01rem;
-  }
+  height: rem(57px);
+  background-color: #eae0d5;
+  margin-bottom: 0.01rem;
+}
 
-  
+
+.inner {
+  height: rem(56px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+@media (max-width: $mantine-breakpoint-sm) {
   .inner {
     height: rem(56px);
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
   }
 
+  
+}
 
+.ShoppingCart {
+  position: absolute;
+  left: 60rem;
+}
 
-  @media (max-width: $mantine-breakpoint-sm) {
-    .inner {
-      height: rem(56px);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-  }
-
- .ShoppingCart {
+@media (max-width: $mantine-breakpoint-sm) {
+  .ShoppingCart {
     position: absolute;
-    left: 80rem;
-    cursor: pointer;
+    left: 17rem;
   }
-
-  @media screen and (max-width: 768px) {
-    .ShoppingCart {
-      position: absolute;
-      left: 17rem;
-    }
-    
-  }
-
-  .Notification {
-    position: absolute;
-    left: 81.3rem;
-    bottom:1.5rem;
-    cursor: pointer;
-    background-color: #BCA37F;
-    color: white;
-    padding: 0.01rem 0.8rem;
-    border-radius: 50%;
-  }
-
-  .Notification p {
-    margin: 0.2px;
-    color: #113946;
-  }
+}
 
 
-  @media screen and (max-width: 768px) {
-    .Notification {
-      position: absolute;
-      left: 18.5rem;
-      bottom:1.5rem;
-    }
-    
-  }
 
-  
-  
-  .link {
-    display: block;
-    line-height: 1;
-    padding: rem(8px) rem(12px);
-    border-radius: var(--mantine-radius-sm);
-    text-decoration: none;
-    font-size: var(--mantine-font-size-sm);
-    font-weight: 500;
-    color: #113946;
-  
-    [data-mantine-color-scheme] &[data-active] {
-      background-color: #113946;
-      color: var(--mantine-color-white);
-    }
+
+.link {
+  display: block;
+  line-height: 1;
+  padding: rem(8px) rem(12px);
+  border-radius: var(--mantine-radius-sm);
+  text-decoration: none;
+  font-size: var(--mantine-font-size-sm);
+  font-weight: 500;
+  color: #22333b;
+
+  [data-mantine-color-scheme] &[data-active] {
+    background-color: #22333b;
+    color: var(--mantine-color-white);
   }
+}

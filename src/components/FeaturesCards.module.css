@@ -1,7 +1,7 @@
 .title {
     font-size: rem(34px);
     font-weight: 900;
-    color: #BCA37F;
+    color: #c6ac8f;
     @media (max-width: $mantine-breakpoint-sm) {
       font-size: rem(24px);
     }
@@ -14,7 +14,7 @@
     &::after {
       content: '';
       display: block;
-      background-color: #BCA37F;
+      background-color: #c6ac8f;
       width: rem(45px);
       height: rem(2px);
       margin-top: var(--mantine-spacing-sm);
@@ -25,7 +25,7 @@
   
   .card {
     border: rem(1px) solid light-dark(var(--mantine-color-gray-1), var(--mantine-color-dark-5));
-    background-color: #FFF2D8;
+    background-color: #fff;
   }
   
   .cardTitle {

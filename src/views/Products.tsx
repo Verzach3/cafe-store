@@ -27,7 +27,7 @@ export default function Products() {
     setLoading(true);
     const fetchData = async (page: number) => {
       coffeeApi
-        .get(`/api/collections/items/records?page=${page}&perPage=3`)
+        .get(`/api/collections/items/records?page=${page}&perPage=6`)
         .then((response) => {
           const data = transformProduct(response.data.items);
           setProduct(data);
@@ -105,7 +105,7 @@ export default function Products() {
           verticalSpacing={{ base: "md", sm: "xs" }}
         >
           {product.map((product) => (
-            <div className={classes.CardEffect}>
+            <div className={classes.CardEffect} key={product.id}>
               <Card product={product} key={product.id} />
             </div>
           ))}

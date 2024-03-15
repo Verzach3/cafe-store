@@ -4,9 +4,9 @@ import Layout from "./components/Layout.tsx";
 import { ContactUs } from "./views/Contact.tsx";
 import Products from "./views/Products.tsx";
 import { Page404 } from "./views/Page404.tsx";
-import ShoppingCartView from "./views/ShoppingCartView.tsx";
 import { Auth } from "./views/Auth.tsx";
 import Admin from "./views/Admin.tsx";
+import { About } from "./views/About.tsx";
 
 export const router = createBrowserRouter([
     {
@@ -16,7 +16,7 @@ export const router = createBrowserRouter([
             {path: "/", element: <Home/>},
             {path: "/products", element: <Products/>},
             {path: "/contact", element: <ContactUs/>},
-            {path: "/cart", element: <ShoppingCartView/>}
+            {path: "/about", element: <About/>},
         ],
     },
     {
