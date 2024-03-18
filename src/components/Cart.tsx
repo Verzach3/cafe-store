@@ -18,7 +18,7 @@ export default function Cart({
     0.0
   );
 
-  const phoneNumber = "";
+  const phoneNumber = "573155663761";
 
   const formatProductsAsText = (products: ProductCart[]): string => {
     let text = "Hola, me gustaría comprar los siguientes productos: \n\n";
