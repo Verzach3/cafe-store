@@ -18,6 +18,8 @@ export default function Cart({
     0.0
   );
 
+  const phoneNumber = "";
+
   const formatProductsAsText = (products: ProductCart[]): string => {
     let text = "Hola, me gustaría comprar los siguientes productos: \n\n";
     products.forEach((product, index) => {
@@ -34,7 +36,7 @@ export default function Cart({
   const handleSendWhatsAppMessage = () => {
     if (products.length === 0) return;
     const formattedProducts = formatProductsAsText(products);
-    const whatsappUrl = `https://wa.me/${573185575177}?text=${encodeURIComponent(
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
       formattedProducts
     )}`;
     window.open(whatsappUrl, "_blank");
