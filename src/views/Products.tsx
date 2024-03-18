@@ -92,12 +92,15 @@ export default function Products() {
       <div className={classes.Filter}>
         <Filter onFilterChange={onFilterChange} />
       </div>
+      {product.length === 0 && !loading && (
+        <>
+          <div className={classes.NoProducts}>
+            <h1>❌ No hay productos disponibles!</h1>
+          </div>
+        </>
+      )}
       {loading ? (
-        <Loader
-          color="#eae0d5"
-          type="dots"
-          className={classes.Loader}
-        />
+        <Loader color="#eae0d5" type="dots" className={classes.Loader} />
       ) : (
         <SimpleGrid
           cols={{ base: 1, sm: 2, lg: 4 }}

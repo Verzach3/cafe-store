@@ -1,7 +1,8 @@
-import { Button, Drawer,Input } from "@mantine/core";
+import { Button, Drawer, Input } from "@mantine/core";
 
 import classes from "./Cart.module.css";
 import useCart from "../hooks/useCart";
+import { ProductCart } from "../types/types";
 
 export default function Cart({
   openCart,
@@ -14,11 +15,35 @@ export default function Cart({
   
   const total = products.reduce(
     (acc, product) =>
-      acc + parseFloat(product.price.replace(/\./g, '')) * product.quantity,
+      acc + parseFloat(product.price.replace(/\./g, "")) * product.quantity,
     0.0
   );
 
-  const quantity = products.reduce( (acc, product) => acc + product.quantity, 0);
+  const phoneNumber = "573155663761";
+
+  const formatProductsAsText = (products: ProductCart[]): string => {
+    let text = "Hola, me gustaría comprar los siguientes productos: \n\n";
+    products.forEach((product, index) => {
+      text += `\n*Producto ${index + 1}*\n`;
+      text += `Nombre: ${product.name}\n`;
+      text += `Precio: $${product.price}\n`;
+      text += `Descripción: ${product.description}\n`;
+      text += `Cantidad: ${product.quantity}\n`;
+      text += "----------\n";
+    });
+    return text + `\n*Total*: $${total}`;
+  };
+
+  const handleSendWhatsAppMessage = () => {
+    if (products.length === 0) return;
+    const formattedProducts = formatProductsAsText(products);
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+      formattedProducts
+    )}`;
+    window.open(whatsappUrl, "_blank");
+  };
+
+  const quantity = products.reduce((acc, product) => acc + product.quantity, 0);
   return (
     <Drawer
       opened={openCart}
@@ -37,24 +62,44 @@ export default function Cart({
               <p>{product.price}</p>
             </div>
             <div className={classes.PriceButtons}>
-              <Button  onClick={(event)=>{
-                event.preventDefault();
-                modifyQuantity(product.id, product.quantity+1);
-              }}>+</Button>
-              <Input placeholder="Ingrese la cantidad que desea" type="number" style = {
-                {width: "100px", textAlign: "center", margin: "0 10px", padding: "0", height: "30px",
-                  textAlignLast: "center"
-              }
-              } value={product.quantity} onChange={(event)=>{
-                event.preventDefault();
-                if (parseInt(event.currentTarget.value) > 0)
-                modifyQuantity(product.id, parseInt(event.currentTarget.value));
-              }}/>
-              <Button onClick={(event)=>{
-                event.preventDefault();
-                if (product.quantity > 1)
-                modifyQuantity(product.id, product.quantity-1);
-              }}>-</Button>
+              <Button
+                onClick={(event) => {
+                  event.preventDefault();
+                  modifyQuantity(product.id, product.quantity + 1);
+                }}
+              >
+                +
+              </Button>
+              <Input
+                placeholder="Ingrese la cantidad que desea"
+                type="number"
+                style={{
+                  width: "100px",
+                  textAlign: "center",
+                  margin: "0 10px",
+                  padding: "0",
+                  height: "30px",
+                  textAlignLast: "center",
+                }}
+                value={product.quantity}
+                onChange={(event) => {
+                  event.preventDefault();
+                  if (parseInt(event.currentTarget.value) > 0)
+                    modifyQuantity(
+                      product.id,
+                      parseInt(event.currentTarget.value)
+                    );
+                }}
+              />
+              <Button
+                onClick={(event) => {
+                  event.preventDefault();
+                  if (product.quantity > 1)
+                    modifyQuantity(product.id, product.quantity - 1);
+                }}
+              >
+                -
+              </Button>
             </div>
             <div className={classes.Quantity}>
               <p>Cantidad</p>
@@ -62,10 +107,15 @@ export default function Cart({
             </div>
           </div>
           <div className={classes.DeleteButton}>
-            <Button fullWidth color="red" style={{ marginTop: 10 }} onClick={(event)=> {
-              event.preventDefault();
-              removeFromCart(product.id);
-            }}>
+            <Button
+              fullWidth
+              color="red"
+              style={{ marginTop: 10 }}
+              onClick={(event) => {
+                event.preventDefault();
+                removeFromCart(product.id);
+              }}
+            >
               Eliminar
             </Button>
           </div>
@@ -79,13 +129,20 @@ export default function Cart({
           </div>
           <div className={classes.Total}>
             <p>Total</p>
-            <p>{new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(total)}</p>
+            <p>
+              {new Intl.NumberFormat("es-CO", {
+                style: "currency",
+                currency: "COP",
+              }).format(total)}
+            </p>
           </div>
         </div>
-        <Button fullWidth color="green" style={{ marginTop: 10 }} onClick={(event)=> {
-          event.preventDefault();
-          window.location.href='#';
-        }}>
+        <Button
+          fullWidth
+          color="green"
+          style={{ marginTop: 10 }}
+          onClick={handleSendWhatsAppMessage}
+        >
           Comprar
         </Button>
       </div>
