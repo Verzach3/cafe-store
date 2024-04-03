@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { SimpleGrid } from "@mantine/core";
 import { Pagination } from "@mantine/core";
 import { Product, Item } from "../types/types";
 import { transformProduct } from "../helper/transformProducts";
@@ -102,17 +101,13 @@ export default function Products() {
       {loading ? (
         <Loader color="#eae0d5" type="dots" className={classes.Loader} />
       ) : (
-        <SimpleGrid
-          cols={{ base: 1, sm: 2, lg: 4 }}
-          spacing={{ base: 10, sm: "md" }}
-          verticalSpacing={{ base: "md", sm: "md" }}
-        >
+        <div className={classes.gridCards}>
           {product.map((product) => (
-            <div className={classes.CardEffect} key={product.id}>
+            <div className={classes.Cards} key={product.id}>
               <Card product={product} key={product.id} />
             </div>
           ))}
-        </SimpleGrid>
+        </div>
       )}
       <Pagination
         value={page}
