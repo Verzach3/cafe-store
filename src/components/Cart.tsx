@@ -30,7 +30,10 @@ export default function Cart({
       text += `Cantidad: ${product.quantity}\n`;
       text += "----------\n";
     });
-    return text + `\n*Total*: $${total}`;
+    return text + `\n*Total*: ${new Intl.NumberFormat("es-CO", {
+      style: "currency",
+      currency: "COP",
+    }).format(total)}`;
   };
 
   const handleSendWhatsAppMessage = () => {
