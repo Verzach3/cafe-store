@@ -1,43 +1,55 @@
 .Product {
-    background-color: #22333b;
+  background-color: #22333b;
 }
 
 .Pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5rem;
 }
 
 .Filter {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
 }
 
 .Loader {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 5rem;
-    margin-left: 45rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5rem;
+  margin-left: 45rem;
 }
 
 @media screen and (max-width: 768px) {
-    .Loader {
-        margin-left: 11rem;
-    }
+  .Loader {
+    margin-left: 11rem;
+  }
+}
+
+.gridCards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+    margin: 0 auto;
+    margin-left: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .gridCards {
+      margin-left: 0.4rem;
+  }
     
 }
 
-.CardEffect:hover {
-    transform: scale(1.05);
-    transition: all 0.3s ease;
-}
+
 
 .NoProducts h1 {
-    text-align: center;
-    margin-top: 5rem;
-    color: #fff;
+  text-align: center;
+  margin-top: 5rem;
+  color: #fff;
 }
