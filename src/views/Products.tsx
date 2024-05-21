@@ -10,6 +10,7 @@ import { coffeeApi } from "../api/coffeApi";
 import Filter from "../components/Filter";
 import useCart from "../hooks/useCart";
 import classes from "./Products.module.css";
+import { IconShoppingBagPlus } from "@tabler/icons-react";
 
 export default function Products() {
 	const [product, setProduct] = useState<Product[]>([]);
@@ -106,9 +107,10 @@ export default function Products() {
 				{!loading && (
 					<div className={classes.gridCards}>
 						{product.map((product) => (
-							<Card key={product.id} withBorder>
+							<Card key={product.id} withBorder radius={"md"}>
 								<Center p={0} m={0}>
 									<Image
+                    radius={"md"}
 										fit="cover"
 										src={product.images}
 										alt=""
@@ -121,16 +123,23 @@ export default function Products() {
 								<Text size="lg">
 									<p>${product.price}</p>
 								</Text>
-								<Center>
-									<Button
-										onClick={(event) => {
-											event.preventDefault();
-											addToCart(product, 1);
-										}}
-									>
-										Añadir a la cesta
-									</Button>
-								</Center>
+								<Card.Section>
+									<Group grow>
+										<Button
+                    
+                    rightSection={<IconShoppingBagPlus/>}
+                    radius={"xs"}
+                    color="dark"
+											w={"100%"}
+											onClick={(event) => {
+												event.preventDefault();
+												addToCart(product, 1);
+											}}
+										>
+											Añadir a la cesta
+										</Button>
+									</Group>
+								</Card.Section>
 							</Card>
 						))}
 					</div>
