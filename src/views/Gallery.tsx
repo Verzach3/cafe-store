@@ -1,11 +1,8 @@
 import {
-	Center,
 	Container,
 	Grid,
-	SimpleGrid,
-	Stack,
-	Text,
 	Image,
+	Stack,
 	Title,
 } from "@mantine/core";
 
@@ -45,7 +42,6 @@ function Gallery() {
 							src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-7.png"
 						/>
 					</Grid.Col>
-          
 				</Grid>
 			</Stack>
 		</Container>

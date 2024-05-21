@@ -1,27 +1,26 @@
+import { Button, Card, Center, Group, Image, Text } from "@mantine/core";
 import { useEffect, useState } from "react";
-import { Center, Group, Pagination } from "@mantine/core";
-import { Product, Item } from "../types/types";
-import { transformProduct } from "../helper/transformProducts";
-import Card from "../components/Card";
 import { HeroImageBackground } from "../components/HeroImageBackground";
+import { transformProduct } from "../helper/transformProducts";
+import type { Item, Product } from "../types/types";
 
-import classes from "./Products.module.css";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Loader } from "@mantine/core";
+import { useLocation } from "react-router-dom";
 import { coffeeApi } from "../api/coffeApi";
 import Filter from "../components/Filter";
-import { Loader } from "@mantine/core";
+import useCart from "../hooks/useCart";
+import classes from "./Products.module.css";
 
 export default function Products() {
 	const [product, setProduct] = useState<Product[]>([]);
-	const [totalPages, setTotalPages] = useState(1);
+	const [_, setTotalPages] = useState(1);
 	const [loading, setLoading] = useState(false);
-	const [page, setPage] = useState(1);
+	const [__, setPage] = useState(1);
 	const { search } = useLocation();
-	const navigate = useNavigate();
-
+	const { addToCart } = useCart();
 	useEffect(() => {
 		const initialPage = new URLSearchParams(search).get("page");
-		const pageNumber = parseInt(initialPage || "1", 10);
+		const pageNumber = Number.parseInt(initialPage || "1", 10);
 		setPage(pageNumber);
 		setLoading(true);
 		const fetchData = async (page: number) => {
@@ -86,9 +85,12 @@ export default function Products() {
 	};
 
 	return (
-		<div className={classes.Product} style={{
-      paddingBottom: "5rem"
-    }}>
+		<div
+			className={classes.Product}
+			style={{
+				paddingBottom: "5rem",
+			}}
+		>
 			<HeroImageBackground />
 			<div className={classes.Filter}>
 				<Filter onFilterChange={onFilterChange} />
@@ -104,9 +106,32 @@ export default function Products() {
 				{!loading && (
 					<div className={classes.gridCards}>
 						{product.map((product) => (
-							<div className={classes.Cards} key={product.id}>
-								<Card product={product} key={product.id} />
-							</div>
+							<Card key={product.id} withBorder>
+								<Center p={0} m={0}>
+									<Image
+										fit="cover"
+										src={product.images}
+										alt=""
+										className="classes.CardImage"
+									/>
+								</Center>
+								<Text>
+									<p>{product.name}</p>
+								</Text>
+								<Text size="lg">
+									<p>${product.price}</p>
+								</Text>
+								<Center>
+									<Button
+										onClick={(event) => {
+											event.preventDefault();
+											addToCart(product, 1);
+										}}
+									>
+										Añadir a la cesta
+									</Button>
+								</Center>
+							</Card>
 						))}
 					</div>
 				)}

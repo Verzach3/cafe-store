@@ -1,19 +1,15 @@
 import {
-	Text,
-	Title,
-	SimpleGrid,
-	TextInput,
-	Textarea,
-	Button,
-	Group,
 	ActionIcon,
 	Card,
-  Center,
+	Center,
+	Group,
+	Text,
+	Title,
 } from "@mantine/core";
 import {
-	IconBrandWhatsapp,
 	IconBrandFacebook,
 	IconBrandInstagram,
+	IconBrandWhatsapp,
 } from "@tabler/icons-react";
 import { ContactIconsList } from "../components/ContactIcons";
 import classes from "./ContactUs.module.css";
