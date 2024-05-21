@@ -46,11 +46,11 @@ import {
   
     return (
       <Container size="lg" py="xl">
-        <Group justify="center">
+        {/* <Group justify="center">
           <Badge variant="filled" size="lg">
             Sponsors
           </Badge>
-        </Group>
+        </Group> */}
   
         <Title order={2} className={classes.title} ta="center" mt="sm">
           Café granito marrón es posible gracias a

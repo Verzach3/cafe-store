@@ -7,7 +7,7 @@ export function HeroImageBackground() {
       <Overlay color="#000" opacity={0.65} zIndex={1} />
 
       <div className={classes.inner}>
-        <Title className={classes.title}>
+        <Title className={classes.title} >
           Café granito marrón{' '}
           <Text component="span" inherit className={classes.highlight}>
             un sabor único

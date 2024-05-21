@@ -5,7 +5,9 @@ import { Footer } from "./Footer.tsx";
 
 function Layout() {
   return (
-    <AppShell>
+    <AppShell header={{
+      height: 50
+    }}>
       <AppShell.Header>
         <Header />
       </AppShell.Header>
