@@ -7,6 +7,7 @@ import { Page404 } from "./views/Page404.tsx";
 import { Auth } from "./views/Auth.tsx";
 import Admin from "./views/Admin.tsx";
 import { About } from "./views/About.tsx";
+import Gallery from "./views/Gallery.tsx";
 
 export const router = createBrowserRouter([
     {
@@ -17,6 +18,7 @@ export const router = createBrowserRouter([
             {path: "/products", element: <Products/>},
             {path: "/contact", element: <ContactUs/>},
             {path: "/about", element: <About/>},
+            {path: "/gallery", element: <Gallery/>},
         ],
     },
     {

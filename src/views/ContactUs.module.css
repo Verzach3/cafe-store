@@ -5,7 +5,6 @@
       #5e503f 0%,
       #22333b 100%
     );
-    margin-top: 3rem;
     border-radius: var(--mantine-radius-md);
     padding: calc(var(--mantine-spacing-xl) * 2.5);
 

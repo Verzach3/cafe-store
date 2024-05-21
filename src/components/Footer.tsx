@@ -27,6 +27,7 @@ export function Footer() {
     const links = group.links.map((link, index) => (
       <Text<'a'>
         key={index}
+        c={"dark"}
         className={classes.link}
         component="a"
         href={link.link}
@@ -40,7 +41,7 @@ export function Footer() {
 
     return (
       <div className={classes.wrapper} key={group.title}>
-        <Text className={classes.title}>{group.title}</Text>
+        <Text c={"dark"} className={classes.title}>{group.title}</Text>
         {links}
       </div>
     );

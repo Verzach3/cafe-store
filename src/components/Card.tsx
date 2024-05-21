@@ -1,11 +1,11 @@
 
 import { FaCartPlus } from "react-icons/fa";
 import { PiStarThin } from "react-icons/pi";
-import { Button } from "@mantine/core";
+import { Button, Image, Text } from "@mantine/core";
 import '@mantine/notifications/styles.css';
 
 import "./styles/Card.css";
-import { Product } from "../types/types";
+import type { Product } from "../types/types";
 import useCart from "../hooks/useCart";
 
 export default function Card({ product }: { product: Product }) {
@@ -18,7 +18,33 @@ export default function Card({ product }: { product: Product }) {
         <div className="box-container">
           <div className="box">
             <div className="icons">
+            </div>
+              <Image h={"60%"} w={"60%"} mt={"md"} radius={"lg"} src={product.images} />
+            <div className="content">
+              <Text size="lg" mt={"md"} fw={600}>{product.name}</Text>
+              {/* <div className="stars">
+                <i>
+                  <PiStarThin />
+                </i>
+                <i>
+                <PiStarThin />
+                </i>
+                <i>
+                <PiStarThin />
+                </i>
+                <i>
+                <PiStarThin />
+                </i>
+                <i>
+                <PiStarThin />
+                </i>
+              </div> */}
+              <Text fw={600} className="price">
+                ${product.price}
+                 {/* <span>{product.previous_value}</span> */}
+              </Text>
               <Button
+                mt={"md"}
                 color="#22333b"
                 className="btn-cart"
                 size={"xl"}
@@ -28,32 +54,6 @@ export default function Card({ product }: { product: Product }) {
               >
                 Añadir <FaCartPlus />
               </Button>
-            </div>
-            <div className="image">
-              <img src={product.images} alt="" />
-            </div>
-            <div className="content">
-              <h3>{product.name}</h3>
-              <div className="stars">
-                <i>
-                  <PiStarThin />
-                </i>
-                <i>
-                  <PiStarThin />
-                </i>
-                <i>
-                  <PiStarThin />
-                </i>
-                <i>
-                  <PiStarThin />
-                </i>
-                <i>
-                  <PiStarThin />
-                </i>
-              </div>
-              <div className="price">
-                ${product.price} <span>{product.previous_value}</span>
-              </div>
             </div>
           </div>
         </div>

@@ -1,7 +1,7 @@
 .wrapper {
   position: relative;
-  padding-top: rem(200px);
-  padding-bottom: rem(200px);
+  padding-top: rem(100px);
+  padding-bottom: rem(50px);
   background-image: url("/cafe montaña.png");
   background-size: cover;
   background-position: center;

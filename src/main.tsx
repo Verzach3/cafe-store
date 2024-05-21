@@ -20,7 +20,7 @@ window.pb = new PocketBase("https://cafe-granito-marron-pb.fly.dev/");
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <JotaiProvider>
-      <MantineProvider>
+      <MantineProvider forceColorScheme="dark">
         <Notifications />
         <RouterProvider router={router} />
       </MantineProvider>
