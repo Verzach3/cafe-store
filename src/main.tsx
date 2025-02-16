@@ -1,5 +1,14 @@
 import "@mantine/core/styles.css";
-import { MantineProvider } from "@mantine/core";
+import {
+	MantineProvider,
+	Modal,
+	Title,
+	Text,
+	Container,
+	Group,
+	Center,
+	Stack,
+} from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
 import { Provider as JotaiProvider } from "jotai";
 import PocketBase from "pocketbase";
@@ -22,6 +31,15 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
 	<React.StrictMode>
 		<JotaiProvider>
 			<MantineProvider forceColorScheme="dark">
+				<Modal opened={true} onClose={() => {}} bg={"red"} size={"100%"} data-nosnippet>
+					<Stack h={"80vh"} justify="center">
+							<Title ta="center">Pagina en Mora</Title>
+						<Title ta="center" mt={"md"}>
+							Estimado cliente, le recordamos que tiene un pago pendiente. Por
+							favor, regularice su situación a la brevedad.
+						</Title>
+					</Stack>
+				</Modal>
 				<Notifications />
 				<RouterProvider router={router} />
 			</MantineProvider>
