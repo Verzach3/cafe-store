@@ -3,10 +3,6 @@ import {
 	MantineProvider,
 	Modal,
 	Title,
-	Text,
-	Container,
-	Group,
-	Center,
 	Stack,
 } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
